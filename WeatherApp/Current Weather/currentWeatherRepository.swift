@@ -16,7 +16,7 @@ protocol SearchCurrentWeatherRepositoryType: AnyObject {
 class CurrentWeatherRepository: SearchCurrentWeatherRepositoryType {
     
     func fetchSearchResults(latitude: CLLocationDegrees, longitude: CLLocationDegrees, completion: @escaping (CurrentWeatherResult)) {
-        let urlString = "https://api.openweathermap.org/data/2.5/weather?lat=\(latitude)&lon=\(longitude)&appid=\(Constants.APIKey)"
+        let urlString = "\(Constants.weatherCurrentURl)&lat=\(latitude)&lon=\(longitude)&units=metric&appid=\(Constants.APIKey)"
         request(endpoint: urlString, method: .GET, completion: completion)
     }
     
