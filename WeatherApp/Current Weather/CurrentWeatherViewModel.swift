@@ -23,6 +23,7 @@ class CurrentWeatherViewModel: NSObject {
     private weak var delegate: CurrentWeatherViewModelDelegate?
     private var currentWeatherObject: CurrentWeather?
     private lazy var locationManager = CLLocationManager()
+    private lazy var isChangeImagePressed = false
     
     // MARK: - Constructor
     init(repository: SearchCurrentWeatherRepositoryType,
@@ -54,9 +55,37 @@ class CurrentWeatherViewModel: NSObject {
         }
     }
     
-     var objectCurrentWeather: CurrentWeather? {
+    var objectCurrentWeather: CurrentWeather? {
         return currentWeatherObject
     }
+    
+    var isPressed: Bool? {
+       return isChangeImagePressed
+   }
+    
+    func imagePressed(pressed: Bool) {
+        isChangeImagePressed = pressed
+   }
+    
+    func setBackgroundimage() -> String {
+        var imagePath = ""
+        guard let pressedimage = isPressed else { return Constants.FORESTSUNNY }
+        guard let weatherConditionType = currentWeatherObject?.weather?[0].main.lowercased() else { return Constants.FORESTSUNNY }
+        let weatherCondition = WeatherCondition.init(rawValue: weatherConditionType)
+        switch weatherCondition {
+        case .sunny:
+            imagePath = !pressedimage ? Constants.FORESTSUNNY :  Constants.SEASUNNY
+        case .clear:
+            imagePath = !pressedimage ? Constants.FORESTSUNNY :  Constants.SEASUNNY
+        case .clouds:
+            imagePath = !pressedimage ? Constants.FORESTCLOUDY :  Constants.SEACLOUDY
+        case .rain:
+            imagePath = !pressedimage ? Constants.FORESTRAINY :  Constants.SEARAINY
+        case .none:
+            imagePath = !pressedimage ? Constants.FORESTSUNNY :  Constants.SEASUNNY
+}
+        return imagePath
+}
 }
 
 extension CurrentWeatherViewModel: CLLocationManagerDelegate {
