@@ -22,8 +22,10 @@ class CurrentWeatherViewModel: NSObject {
     private var currentWeatherRepository: SearchCurrentWeatherRepositoryType?
     private weak var delegate: CurrentWeatherViewModelDelegate?
     private var currentWeatherObject: CurrentWeather?
+    private var forcastObject: ForecastData?
     private lazy var locationManager = CLLocationManager()
     private lazy var isChangeImagePressed = false
+    private var dayOfWeek = ["Tuesday", "Wedensday", "Thursday", "Friday", "Saturday", "Sunday"]
     
     // MARK: - Constructor
     init(repository: SearchCurrentWeatherRepositoryType,
@@ -44,7 +46,6 @@ class CurrentWeatherViewModel: NSObject {
                 switch result {
                 case .success(let weatherData):
                     self?.currentWeatherObject = weatherData
-                    print(weatherData)
                     completion(weatherData)
                     self?.delegate?.reloadView()
                 case .failure(let error):
@@ -55,13 +56,39 @@ class CurrentWeatherViewModel: NSObject {
         }
     }
     
+    func fetchForecastCurrentWeatherResults(completion: @escaping (ForecastData) -> Void) {
+        if let latitude = locationManager.location?.coordinate.latitude,
+                let longitude = locationManager.location?.coordinate.longitude {
+        currentWeatherRepository?.fetchForecastSearchResults(latitude: latitude, longitude: longitude, completion: { [weak self] result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let forecastData):
+                    self?.forcastObject = forecastData
+                    completion(forecastData)
+                    self?.delegate?.reloadView()
+                case .failure(let error):
+                    self?.delegate?.showError(error: error.rawValue, message: "Could not retrieve the forecast weather.")
+                }
+            }
+        })
+        }
+    }
+    
     var objectCurrentWeather: CurrentWeather? {
         return currentWeatherObject
+    }
+    
+    var objectForecastWeather: ForecastData? {
+        return forcastObject
     }
     
     var isPressed: Bool? {
        return isChangeImagePressed
    }
+    
+    func dayOfWeeekArray(index: Int) -> String {
+        return dayOfWeek[index]
+    }
     
     func imagePressed(pressed: Bool) {
         isChangeImagePressed = pressed

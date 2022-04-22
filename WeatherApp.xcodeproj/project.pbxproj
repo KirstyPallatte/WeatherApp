@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A11C4B4C28126E97006D605C /* FiveDayForecastModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11C4B4B28126E97006D605C /* FiveDayForecastModel.swift */; };
+		A11C4B4E2812776C006D605C /* FiveDayForecastTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11C4B4D2812776C006D605C /* FiveDayForecastTableViewCell.swift */; };
+		A11C4B50281291DE006D605C /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11C4B4F281291DE006D605C /* UIImageExtension.swift */; };
 		A18737E32811222800518E31 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18737E22811222800518E31 /* AppDelegate.swift */; };
 		A18737E52811222800518E31 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18737E42811222800518E31 /* SceneDelegate.swift */; };
 		A18737E72811222800518E31 /* CurrentWeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18737E62811222800518E31 /* CurrentWeatherViewController.swift */; };
@@ -21,11 +24,7 @@
 		A187381A28112D6000518E31 /* currentWeatherRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A187381928112D6000518E31 /* currentWeatherRepository.swift */; };
 		A187381E28112DE500518E31 /* ServiceErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A187381D28112DE500518E31 /* ServiceErrors.swift */; };
 		A187382028112EBD00518E31 /* currentWeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A187381F28112EBD00518E31 /* currentWeatherModel.swift */; };
-		A187382228112F4800518E31 /* fiveDayForecastModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A187382128112F4800518E31 /* fiveDayForecastModel.swift */; };
 		A18738262811318900518E31 /* CurrentWeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18738252811318900518E31 /* CurrentWeatherViewModel.swift */; };
-		A187382828113DCB00518E31 /* fiveDayForecastRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A187382728113DCB00518E31 /* fiveDayForecastRepository.swift */; };
-		A187382B28113F1C00518E31 /* FiveDayForecastViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A187382A28113F1C00518E31 /* FiveDayForecastViewModel.swift */; };
-		A187382D28113FD300518E31 /* FiveDayForecastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A187382C28113FD300518E31 /* FiveDayForecastViewController.swift */; };
 		A18738312811900100518E31 /* weatherConditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18738302811900100518E31 /* weatherConditions.swift */; };
 		A1873833281192A000518E31 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1873832281192A000518E31 /* UIColorExtension.swift */; };
 /* End PBXBuildFile section */
@@ -48,6 +47,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A11C4B4B28126E97006D605C /* FiveDayForecastModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiveDayForecastModel.swift; sourceTree = "<group>"; };
+		A11C4B4D2812776C006D605C /* FiveDayForecastTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiveDayForecastTableViewCell.swift; sourceTree = "<group>"; };
+		A11C4B4F281291DE006D605C /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		A18737DF2811222800518E31 /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A18737E22811222800518E31 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A18737E42811222800518E31 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -66,11 +68,7 @@
 		A187381928112D6000518E31 /* currentWeatherRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = currentWeatherRepository.swift; sourceTree = "<group>"; };
 		A187381D28112DE500518E31 /* ServiceErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceErrors.swift; sourceTree = "<group>"; };
 		A187381F28112EBD00518E31 /* currentWeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = currentWeatherModel.swift; sourceTree = "<group>"; };
-		A187382128112F4800518E31 /* fiveDayForecastModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fiveDayForecastModel.swift; sourceTree = "<group>"; };
 		A18738252811318900518E31 /* CurrentWeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherViewModel.swift; sourceTree = "<group>"; };
-		A187382728113DCB00518E31 /* fiveDayForecastRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fiveDayForecastRepository.swift; sourceTree = "<group>"; };
-		A187382A28113F1C00518E31 /* FiveDayForecastViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiveDayForecastViewModel.swift; sourceTree = "<group>"; };
-		A187382C28113FD300518E31 /* FiveDayForecastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiveDayForecastViewController.swift; sourceTree = "<group>"; };
 		A18738302811900100518E31 /* weatherConditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = weatherConditions.swift; sourceTree = "<group>"; };
 		A1873832281192A000518E31 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -128,7 +126,6 @@
 				A18737E82811222800518E31 /* Main.storyboard */,
 				A18738342811944E00518E31 /* Extensions */,
 				A18737EE2811222B00518E31 /* Assets.xcassets */,
-				A187382928113EDC00518E31 /* Five Day Forecast */,
 				A1873823281130E200518E31 /* Current Weather */,
 				A18738172811229800518E31 /* Utilities */,
 				A18737F02811222B00518E31 /* LaunchScreen.storyboard */,
@@ -168,8 +165,10 @@
 			isa = PBXGroup;
 			children = (
 				A187381928112D6000518E31 /* currentWeatherRepository.swift */,
-				A187381F28112EBD00518E31 /* currentWeatherModel.swift */,
 				A18737E62811222800518E31 /* CurrentWeatherViewController.swift */,
+				A11C4B4D2812776C006D605C /* FiveDayForecastTableViewCell.swift */,
+				A11C4B4B28126E97006D605C /* FiveDayForecastModel.swift */,
+				A187381F28112EBD00518E31 /* currentWeatherModel.swift */,
 				A18738252811318900518E31 /* CurrentWeatherViewModel.swift */,
 				A18738302811900100518E31 /* weatherConditions.swift */,
 			);
@@ -184,21 +183,11 @@
 			path = "Service Layer";
 			sourceTree = "<group>";
 		};
-		A187382928113EDC00518E31 /* Five Day Forecast */ = {
-			isa = PBXGroup;
-			children = (
-				A187382728113DCB00518E31 /* fiveDayForecastRepository.swift */,
-				A187382128112F4800518E31 /* fiveDayForecastModel.swift */,
-				A187382A28113F1C00518E31 /* FiveDayForecastViewModel.swift */,
-				A187382C28113FD300518E31 /* FiveDayForecastViewController.swift */,
-			);
-			path = "Five Day Forecast";
-			sourceTree = "<group>";
-		};
 		A18738342811944E00518E31 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				A1873832281192A000518E31 /* UIColorExtension.swift */,
+				A11C4B4F281291DE006D605C /* UIImageExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -359,15 +348,14 @@
 				A187381A28112D6000518E31 /* currentWeatherRepository.swift in Sources */,
 				A1873833281192A000518E31 /* UIColorExtension.swift in Sources */,
 				A18738162811226200518E31 /* Constants.swift in Sources */,
-				A187382228112F4800518E31 /* fiveDayForecastModel.swift in Sources */,
-				A187382B28113F1C00518E31 /* FiveDayForecastViewModel.swift in Sources */,
 				A18737ED2811222800518E31 /* WeatherApp.xcdatamodeld in Sources */,
+				A11C4B4C28126E97006D605C /* FiveDayForecastModel.swift in Sources */,
+				A11C4B4E2812776C006D605C /* FiveDayForecastTableViewCell.swift in Sources */,
 				A18738312811900100518E31 /* weatherConditions.swift in Sources */,
 				A18737E72811222800518E31 /* CurrentWeatherViewController.swift in Sources */,
+				A11C4B50281291DE006D605C /* UIImageExtension.swift in Sources */,
 				A18737E32811222800518E31 /* AppDelegate.swift in Sources */,
 				A18738262811318900518E31 /* CurrentWeatherViewModel.swift in Sources */,
-				A187382D28113FD300518E31 /* FiveDayForecastViewController.swift in Sources */,
-				A187382828113DCB00518E31 /* fiveDayForecastRepository.swift in Sources */,
 				A18737E52811222800518E31 /* SceneDelegate.swift in Sources */,
 				A187381E28112DE500518E31 /* ServiceErrors.swift in Sources */,
 			);
