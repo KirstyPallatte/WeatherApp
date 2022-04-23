@@ -23,7 +23,7 @@ struct ListItem: Codable {
     let wind: ForecastWind
     let sys: ForecastSys
     let dtTxt: String
-
+    
     enum CodingKeys: String, CodingKey {
         case dt, main, weather, clouds, wind, sys
         case dtTxt = "dt_txt"
