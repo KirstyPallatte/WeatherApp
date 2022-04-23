@@ -28,8 +28,12 @@ class FavouriteLocationsViewController: UIViewController {
         cityFavouriteViewModel.saveCityInLocalDatabase(nameCity: cityName, lattitude: cityLattitude, longitude: cityLongitude)
     }
     
-    func setSingleCityData(cityName: String, lattitude: Double, longitude: Double) {
-        cityFavouriteViewModel.setSingleCityObject(cityName: cityName, lattitude: lattitude, longitude: longitude)
+    @IBAction private func addFavouritesButtonPressed(_ sender: Any) {
+        performSegue(withIdentifier: "SearchCityViewController", sender: self)
+    }
+
+    func setSingleCityData(cityName: String, lattitude: Double, longitude: Double, image: String) {
+        cityFavouriteViewModel.setSingleCityObject(cityName: cityName, lattitude: lattitude, longitude: longitude, image: image)
     }
     
     private func setupTableView() {
@@ -47,18 +51,14 @@ extension FavouriteLocationsViewController: UITableViewDataSource, UITableViewDe
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cityName: String = ""
-        var cityLattitude: Double = 0.00
-        var cityLongitude: Double = 0.00
-        
         guard let city = cityFavouriteViewModel.savedCity(at: indexPath.row) else { return UITableViewCell() }
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "favouriteCell",
                                                        for: indexPath) as? FavouriteTableViewCell
         else { return UITableViewCell() }
         
-        cityName = cityFavouriteViewModel.cityLocationNameSaved(city: city)
-        cityLattitude = cityFavouriteViewModel.cityLattitudeSaved(city: city)
-        cityLongitude = cityFavouriteViewModel.cityLongitudeSaved(city: city)
+        let cityName = cityFavouriteViewModel.cityLocationNameSaved(city: city)
+        let cityLattitude = cityFavouriteViewModel.cityLattitudeSaved(city: city)
+        let cityLongitude = cityFavouriteViewModel.cityLongitudeSaved(city: city)
         cell.updateUI(cityName: cityName, lattitudeCity: cityLattitude, longitudeCity: cityLongitude)
         cell.setNeedsLayout()
         return cell

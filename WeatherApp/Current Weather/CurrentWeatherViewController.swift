@@ -70,7 +70,10 @@ class CurrentWeatherViewController: UIViewController {
         let locationLattitude = currentWeather.coord.lat
         let locationLogitude = currentWeather.coord.lon
         if let destination = segue.destination as? FavouriteLocationsViewController {
-            destination.setSingleCityData(cityName: locationName, lattitude: locationLattitude, longitude: locationLogitude)
+            destination.setSingleCityData(cityName: locationName,
+                                          lattitude: locationLattitude,
+                                          longitude: locationLogitude,
+                                          image: Constants.SEASUNNY)
         }
 
     }
