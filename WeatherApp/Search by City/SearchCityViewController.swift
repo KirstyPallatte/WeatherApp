@@ -50,6 +50,27 @@ extension SearchCityViewController: UITableViewDelegate, UITableViewDataSource {
      }
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "FaouritesViewController", sender: self)
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        var pageItem: CityData.RefCountryCode?
+        guard let indexRow = cityTableview.indexPathForSelectedRow?.row else { return }
+        if let destination = segue.destination as? FavouriteLocationsViewController {
+            if !bSearch {
+                pageItem = searchCityViewModel.arrCity?[indexRow]
+            } else {
+                pageItem = searchCityViewModel.filteredCity?[indexRow]
+            }
+            guard let cityName = pageItem?.country else { return }
+            guard let cityLattitude = pageItem?.latitude else { return }
+            guard let cityLongitude = pageItem?.longitude else { return }
+            destination.setSingleCityData(cityName: cityName, lattitude: cityLattitude, longitude: cityLongitude)
+        }
+
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
          let cell = tableView.dequeueReusableCell(withIdentifier: "cell",
                                                   for: indexPath)
@@ -78,6 +99,10 @@ extension SearchCityViewController: searchCityViewModelDelegate {
     }
     
     func showError(error: String, message: String) {
-        
+        displayAlert(alertTitle: error,
+                     alertMessage: message,
+                     alertActionTitle: "Try Again" ,
+                     alertDelegate: self,
+                     alertTriggered: .errorAlert)
     }
 }
