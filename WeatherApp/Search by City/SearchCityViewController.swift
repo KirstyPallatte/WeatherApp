@@ -94,6 +94,10 @@ extension SearchCityViewController: UISearchBarDelegate {
         bSearch = true
         reloadView()
     }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.searchBar.endEditing(true)
+    }
 }
 
 extension SearchCityViewController: searchCityViewModelDelegate {
