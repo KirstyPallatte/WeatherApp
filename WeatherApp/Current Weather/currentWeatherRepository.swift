@@ -62,7 +62,7 @@ class CurrentWeatherRepository: SearchCurrentWeatherRepositoryType {
     }
     
     func fetchForecastSearchResults(latitude: CLLocationDegrees, longitude: CLLocationDegrees, completion: @escaping (FiveDayForecastResult)) {
-        let urlString = "\(Constants.weatherForecast5URl)&lat=\(latitude)&lon=\(longitude)&cnt=5&appid=\(Constants.APIKey)"
+        let urlString = "\(Constants.weatherForecast5URl)&lat=\(latitude)&units=metric&lon=\(longitude)&cnt=5&appid=\(Constants.APIKey)"
         requestForecast(endpoint: urlString, method: .GET, completion: completion)
     }
     

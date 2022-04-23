@@ -16,11 +16,13 @@ class FavouriteTableViewCell: UITableViewCell {
     @IBOutlet weak var cityImageView: UIImageView!
 
     // MARK: - Functions
-    func updateUI(cityName: String, lattitudeCity: Double, longitudeCity: Double) {
+    func updateUI(cityName: String?, lattitudeCity: Double?, longitudeCity: Double?) {
         cityImageView.image = UIImage(named: Constants.SEASUNNY)
         self.cityImageView.layer.cornerRadius = 10
         cityNameLabel.text = cityName
-        cityLattitudeLabel.text = "Lattitude: " + lattitudeCity.description
-        cityLongitudeLabel.text = "Longitude: " + longitudeCity.description
+        guard let lattitude = lattitudeCity?.description else { return }
+        guard let longitude = longitudeCity?.description else { return }
+        cityLattitudeLabel.text = "Lattitude: " + lattitude
+        cityLongitudeLabel.text = "Longitude: " + longitude
     }
 }

@@ -66,7 +66,10 @@ extension SearchCityViewController: UITableViewDelegate, UITableViewDataSource {
             guard let cityName = pageItem?.country else { return }
             guard let cityLattitude = pageItem?.latitude else { return }
             guard let cityLongitude = pageItem?.longitude else { return }
-            destination.setSingleCityData(cityName: cityName, lattitude: cityLattitude, longitude: cityLongitude)
+            destination.setSingleCityData(cityName: cityName,
+                                          lattitude: cityLattitude,
+                                          longitude: cityLongitude,
+                                          image: Constants.SEASUNNY)
         }
 
     }
