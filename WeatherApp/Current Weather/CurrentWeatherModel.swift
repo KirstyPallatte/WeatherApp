@@ -22,7 +22,6 @@ struct CurrentWeather: Codable {
     let id: Int
     let name: String?
     let cod: Int
-    
 }
 
 // MARK: Weather - Clouds
