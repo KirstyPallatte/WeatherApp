@@ -41,6 +41,10 @@ class CurrentWeatherViewController: UIViewController {
         currentWeatherViewModel.imagePressed(pressed: isImagePressed)
         setUpTodaysWeather()
     }
+
+    @IBAction private func saveLocationButtonPressed(_ sender: Any) {
+        performSegue(withIdentifier: "FaouritesViewController", sender: self)
+    }
     
     // MARK: - Functions
     private func setUpTableview() {
@@ -59,6 +63,17 @@ class CurrentWeatherViewController: UIViewController {
             self.weatherTableView.reloadData()
         }
        }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let currentWeather = self.currentWeatherViewModel.objectCurrentWeather else { return }
+        let locationName = currentWeather.sys.country
+        let locationLattitude = currentWeather.coord.lat
+        let locationLogitude = currentWeather.coord.lon
+        if let destination = segue.destination as? FavouriteLocationsViewController {
+            destination.setSingleCityData(cityName: locationName, lattitude: locationLattitude, longitude: locationLogitude)
+        }
+
+    }
     
     func updateUpUICurrentWeather(currentWeather: CurrentWeather) {
         guard let currentTemp = currentWeather.main?.temp else { return }
@@ -135,7 +150,11 @@ extension CurrentWeatherViewController: CurrentWeatherViewModelDelegate {
     }
     
     func didFailWithError(error: NSError?) {
-        print(error?.localizedDescription as Any)
+        displayAlert(alertTitle: "Location Error",
+                     alertMessage: "Could not get your location",
+                     alertActionTitle: "Try Again" ,
+                     alertDelegate: self,
+                     alertTriggered: .errorAlert)
     }
     
     func reloadView() {
@@ -143,7 +162,11 @@ extension CurrentWeatherViewController: CurrentWeatherViewModelDelegate {
     }
     
     func showError(error: String, message: String) {
-        
+        displayAlert(alertTitle: error,
+                     alertMessage: message,
+                     alertActionTitle: "Try Again" ,
+                     alertDelegate: self,
+                     alertTriggered: .errorAlert)
     }
 }
 

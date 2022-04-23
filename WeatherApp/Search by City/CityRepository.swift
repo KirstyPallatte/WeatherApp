@@ -48,7 +48,6 @@ class CityRepository: SearchCityRepositoryType {
                 let object = try JSONDecoder().decode(T.self, from: data)
                 DispatchQueue.main.async {
                     completion(Result.success(object))
-                    print("Sucess")
                 }
             } catch {
                 DispatchQueue.main.async {
