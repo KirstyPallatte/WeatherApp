@@ -25,9 +25,10 @@ class FavouriteLocationViewModel {
     private var cityLongitude = 0.00
     private var isDeleteSucess = false
     
-    private var singleCityName: String = ""
-    private var singleCityLattitude = 0.00
-    private var singleCityLongitude = 0.00
+    private var singleCityName: String?
+    private var singleCityLattitude: Double?
+    private var singleCityLongitude: Double?
+    private var singleCityImage: String?
 
     // MARK: - Constructor
     init(repository: FavouriteLocationRepository,
@@ -36,10 +37,11 @@ class FavouriteLocationViewModel {
         self.delegate = delegate
     }
     
-    func setSingleCityObject(cityName: String, lattitude: Double, longitude: Double) {
+    func setSingleCityObject(cityName: String, lattitude: Double, longitude: Double, image: String) {
         singleCityName = cityName
         singleCityLattitude = lattitude
         singleCityLongitude = longitude
+        singleCityImage = image
     }
     
     func set(isCityDeleteSuccess: Bool) {
@@ -61,6 +63,10 @@ class FavouriteLocationViewModel {
     
     var longitudeSingleCity: Double? {
         return singleCityLongitude
+    }
+    
+    var imageSingleCity: String? {
+        return singleCityImage
     }
 
     var isCitySucessDeleted: Bool {
