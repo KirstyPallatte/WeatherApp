@@ -8,6 +8,8 @@
 import UIKit
 
 class FiveDayForecastTableViewCell: UITableViewCell {
+    
+    // MARK: - IBOutlets
     @IBOutlet weak private var forecastView: UIView!
     @IBOutlet weak private var fiveDayTemperatureLabel: UILabel!
     @IBOutlet weak private var fiveDayIconImage: UIImageView!
@@ -16,12 +18,13 @@ class FiveDayForecastTableViewCell: UITableViewCell {
     
     static let identifier = "ForecastCell"
     
+    // MARK: - Functions
     override func awakeFromNib() {
         super.awakeFromNib()
         contentView.backgroundColor = backgroundCellColour
         
     }
-    
+
     func setCellItems(temperature: Double,
                       day: String,
                       colour: UIColor,
@@ -30,10 +33,6 @@ class FiveDayForecastTableViewCell: UITableViewCell {
         fiveDayLabel.text = day.description
         fiveDayIconImage.image = imageIcon
         forecastView.backgroundColor = colour
-    }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
     }
     
 }
