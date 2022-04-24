@@ -10,10 +10,12 @@ import Foundation
 // MARK: - CityData
 struct CityData: Codable {
     let id: Int?
-    let name, state, country: String?
+    let name, state: String?
+    let country: String?
     let coord: Coordinate?
 }
 
+// MARK: - Coord
 struct Coordinate: Codable {
     let lon, lat: Double?
 }
