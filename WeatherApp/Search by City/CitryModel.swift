@@ -6,17 +6,15 @@
 //
 
 import Foundation
+
+// MARK: - CityData
 struct CityData: Codable {
-        let refCountryCodes: [RefCountryCode]
+    let id: Int
+    let name, state, country: String
+    let coord: Coord
+}
 
-        enum CodingKeys: String, CodingKey {
-            case refCountryCodes = "ref_country_codes"
-        }
-
-    // MARK: - RefCountryCode
-    struct RefCountryCode: Codable {
-        let country, alpha2, alpha3: String
-        let numeric: Int
-        let latitude, longitude: Double
-    }
+// MARK: - Coord
+struct Coord: Codable {
+    let lon, lat: Double
 }
