@@ -66,7 +66,7 @@ class CurrentWeatherViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let currentWeather = self.currentWeatherViewModel.objectCurrentWeather else { return }
-        let locationName = currentWeather.name
+        guard let locationName = currentWeather.name else { return }
         let locationLattitude = currentWeather.coord.lat
         let locationLogitude = currentWeather.coord.lon
         if let destination = segue.destination as? FavouriteLocationsViewController {
