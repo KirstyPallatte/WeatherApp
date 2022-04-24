@@ -55,7 +55,7 @@ extension SearchCityViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        var pageItem: CityData.RefCountryCode?
+        var pageItem: CityData?
         guard let indexRow = cityTableview.indexPathForSelectedRow?.row else { return }
         if let destination = segue.destination as? FavouriteLocationsViewController {
             if !bSearch {
@@ -63,9 +63,9 @@ extension SearchCityViewController: UITableViewDelegate, UITableViewDataSource {
             } else {
                 pageItem = searchCityViewModel.filteredCity?[indexRow]
             }
-            guard let cityName = pageItem?.country else { return }
-            guard let cityLattitude = pageItem?.latitude else { return }
-            guard let cityLongitude = pageItem?.longitude else { return }
+            guard let cityName = pageItem?.name else { return }
+            guard let cityLattitude  = pageItem?.coord?.lat else { return }
+            guard let cityLongitude = pageItem?.coord?.lon else { return }
             destination.setSingleCityData(cityName: cityName,
                                           lattitude: cityLattitude,
                                           longitude: cityLongitude,

@@ -18,7 +18,7 @@ class SearchCityViewModel {
     private var searchCityRepository: SearchCityRepositoryType?
     private weak var delegate: searchCityViewModelDelegate?
     private var cityList: CityData?
-    private var cityFilteredList: [CityData.RefCountryCode]?
+    private var cityFilteredList: CityData?
     
     // MARK: - Constructor
     init(repository: SearchCityRepositoryType,
@@ -40,7 +40,7 @@ class SearchCityViewModel {
 }
     
     var cityCount: Int {
-        return cityList?.refCountryCodes.count ?? 0
+        return cityList?.name.count ?? 0
     }
     
     var filteredCityCount: Int {
@@ -51,15 +51,15 @@ class SearchCityViewModel {
         return cityList
     }
     
-    var arrCity: [CityData.RefCountryCode]? {
-        return cityList?.refCountryCodes
+    var arrCity: [CityData]? {
+        return cityList
     }
     
-    var filteredCity: [CityData.RefCountryCode]? {
+    var filteredCity: [CityData? {
         return cityFilteredList
     }
     
     func search(searchText: String) {
-        cityFilteredList =  (listCity?.refCountryCodes.filter({$0.country.lowercased().contains(searchText.lowercased())}))!
+        cityFilteredList = listCity.name.lowercased().contains(searchText.lowercased())}))
     }
 }
