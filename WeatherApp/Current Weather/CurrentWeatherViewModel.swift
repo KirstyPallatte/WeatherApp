@@ -27,7 +27,11 @@ class CurrentWeatherViewModel: NSObject {
     private lazy var isChangeImagePressed = false
     private var dayOfWeek = ["Sunday","Monday","Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
     private var dayWeekIndex: Int = 0
-    private  var restructDayWeek: [String] = []
+    private var restructDayWeek: [String] = []
+    private var favLattiude: Double?
+    private var favLongitude: Double?
+    private var currentLocationLattiude: Double?
+    private var currentLoationLongitude: Double?
     
     var objectCurrentWeather: CurrentWeather? {
         return currentWeatherObject
@@ -39,6 +43,11 @@ class CurrentWeatherViewModel: NSObject {
     
     var isPressed: Bool? {
         return isChangeImagePressed
+    }
+    
+    func setFavLatLong(cityLattitude: Double, cityLongitude: Double) {
+        favLattiude = cityLattitude
+        favLongitude = cityLongitude
     }
     
     // MARK: - Constructor
@@ -55,9 +64,16 @@ class CurrentWeatherViewModel: NSObject {
     
     // MARK: - Functions
     func fetchCurrentWeatherResults(completion: @escaping (CurrentWeather) -> Void) {
-        if let latitude = locationManager.location?.coordinate.latitude,
-           let longitude = locationManager.location?.coordinate.longitude {
-            currentWeatherRepository?.fetchSearchResults(latitude: latitude, longitude: longitude, completion: { [weak self] result in
+        if favLattiude != nil && favLongitude != nil {
+            currentLocationLattiude = favLattiude
+            currentLoationLongitude = favLongitude
+        } else {
+            currentLocationLattiude = locationManager.location?.coordinate.latitude
+            currentLoationLongitude = locationManager.location?.coordinate.longitude
+        }
+            currentWeatherRepository?.fetchSearchResults(latitude: currentLocationLattiude ?? -28.4793,
+                                                         longitude: currentLoationLongitude ?? 24.6727,
+                                                         completion: { [weak self] result in
                 DispatchQueue.main.async {
                     switch result {
                     case .success(let weatherData):
@@ -70,7 +86,6 @@ class CurrentWeatherViewModel: NSObject {
                 }
             })
         }
-    }
     
     func fetchForecastCurrentWeatherResults(completion: @escaping (ForecastData) -> Void) {
         if let latitude = locationManager.location?.coordinate.latitude,

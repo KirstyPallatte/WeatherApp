@@ -63,6 +63,20 @@ extension FavouriteLocationsViewController: UITableViewDataSource, UITableViewDe
         cell.setNeedsLayout()
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "CurrentWeatherViewController", sender: self)
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? CurrentWeatherViewController {
+            guard let indexRow = favouriteCityTableview.indexPathForSelectedRow?.row else { return }
+            guard let lattitude = cityFavouriteViewModel.savedCity(at: indexRow)?.lattitude,
+                  let longitude = cityFavouriteViewModel.savedCity(at: indexRow)?.longitude else { return }
+            destination.setFavLatLong(cityLattitude:lattitude, cityLongitude: longitude)
+        }
+
+    }
 
     // MARK: - Delete
     func tableView(_ tableView: UITableView,

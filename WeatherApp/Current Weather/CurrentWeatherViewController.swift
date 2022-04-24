@@ -52,6 +52,10 @@ class CurrentWeatherViewController: UIViewController {
         weatherTableView.dataSource = self
     }
     
+    func setFavLatLong(cityLattitude: Double, cityLongitude: Double) {
+        currentWeatherViewModel.setFavLatLong(cityLattitude: cityLattitude, cityLongitude: cityLongitude)
+    }
+    
     private func setUpTodaysWeather() {
         currentWeatherViewModel.fetchCurrentWeatherResults { _ in
             guard let currentWeather = self.currentWeatherViewModel.objectCurrentWeather else { return }
@@ -82,12 +86,13 @@ class CurrentWeatherViewController: UIViewController {
         guard let currentTemp = currentWeather.main?.temp else { return }
         guard let minTemp = currentWeather.main?.tempMin else { return }
         guard let maxTemp = currentWeather.main?.tempMin else { return }
+        guard let nameCity = currentWeather.name else { return }
         guard let currentCondition = currentWeather.weather?[0].main else { return }
         let imageCondition = currentWeatherViewModel.setBackgroundimage()
         setWeatherUI(currentTemp: currentTemp,
                      minTemp: minTemp,
                      maxTemp: maxTemp,
-                     country: currentWeather.sys.country,
+                     nameCity: nameCity,
                      imageCondition: imageCondition,
                      currentCondition: currentCondition)
         setBackgroundColoursCurrentWeather(currentWeather: currentWeather)
@@ -96,14 +101,14 @@ class CurrentWeatherViewController: UIViewController {
     private func setWeatherUI(currentTemp: Double,
                               minTemp: Double,
                               maxTemp: Double,
-                              country: String,
+                              nameCity: String,
                               imageCondition:  String,
                               currentCondition: String) {
         currentTempValueLabel.text = currentTemp.description + "°"
         currentTempLabel.text = currentTemp.description + "°"
         minTempLabel.text = minTemp.description + "°"
         maxTempLabel.text = maxTemp.description  + "°"
-        cityNameLabel.text = country
+        cityNameLabel.text = nameCity
         weatherConditionLabel.text = currentCondition
         weatherImageViewTheme.image = UIImage(named: imageCondition)
 
