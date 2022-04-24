@@ -56,6 +56,6 @@ class SearchCityViewModel {
     }
     
     func search(searchText: String) {
-        cityFilteredList = cityList?.filter({$0.country?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased()})
+        cityFilteredList = cityList?.filter({$0.name?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased()})
     }
 }

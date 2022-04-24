@@ -78,9 +78,9 @@ extension SearchCityViewController: UITableViewDelegate, UITableViewDataSource {
          let cell = tableView.dequeueReusableCell(withIdentifier: "cell",
                                                   for: indexPath)
         if !bSearch {
-            cell.textLabel?.text = searchCityViewModel.arrCity?[indexPath.row].country
+            cell.textLabel?.text = searchCityViewModel.arrCity?[indexPath.row].name
         } else {
-            cell.textLabel?.text = searchCityViewModel.filteredCity?[indexPath.row].country
+            cell.textLabel?.text = searchCityViewModel.filteredCity?[indexPath.row].name
             
         }
         return cell
