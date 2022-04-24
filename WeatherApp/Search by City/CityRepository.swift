@@ -6,7 +6,7 @@
 //
 
 import Foundation
-typealias CityDataResult = (Result<CityData, APIError>) -> Void
+typealias CityDataResult = (Result<[CityData], APIError>) -> Void
 
 protocol SearchCityRepositoryType: AnyObject {
     func fetchCityDataResults(completion: @escaping(CityDataResult))

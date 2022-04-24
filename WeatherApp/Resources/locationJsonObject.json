@@ -1,0 +1,723 @@
+[
+    {
+    "id": 3358975,
+    "name": "Yzerfontein",
+    "state": "",
+    "country": "ZA",
+    "coord": {
+        "lon": 18.16157,
+        "lat": -33.344379
+    }
+},
+    {
+    "id": 3359041,
+    "name": "Worcester",
+    "state": "",
+    "country": "ZA",
+    "coord": {
+        "lon": 19.448521,
+        "lat": -33.646511
+    }
+},
+    {
+    "id": 3359094,
+    "name": "Wolseley",
+    "state": "",
+    "country": "ZA",
+    "coord": {
+        "lon": 19.20052,
+        "lat": -33.414028
+    }
+},
+    {
+    "id": 3359348,
+    "name": "Windsor Park",
+    "state": "",
+    "country": "ZA",
+    "coord": {
+        "lon": 18.70698,
+        "lat": -33.845928
+    }
+},
+    {
+    "id": 3359510,
+    "name": "Wellington",
+    "state": "",
+    "country": "ZA",
+    "coord": {
+        "lon": 19.0112,
+        "lat": -33.639809
+    }
+},
+    {
+    "id": 3359736,
+    "name": "Vredendal",
+    "state": "",
+    "country": "ZA",
+    "coord": {
+        "lon": 18.50119,
+        "lat": -31.668329
+    }
+},
+    {
+    "id": 3360687,
+    "name": "Table View",
+    "state": "",
+    "country": "ZA",
+    "coord": {
+        "lon": 18.4881,
+        "lat": -33.81913
+    }
+},
+    {
+    "id": 3360934,
+    "name": "Strand",
+    "state": "",
+    "country": "ZA",
+    "coord": {
+        "lon": 18.827511,
+        "lat": -34.106869
+    }
+},
+    {
+    "id": 3361025,
+    "name": "Stellenbosch",
+    "state": "",
+    "country": "ZA",
+    "coord": {
+        "lon": 18.86676,
+        "lat": -33.93462
+    }
+},
+    {
+    "id": 3361026,
+    "name": "Stellenberg",
+    "state": "",
+    "country": "ZA",
+    "coord": {
+        "lon": 18.65992,
+        "lat": -33.866089
+    }
+},
+    {
+    "id": 3361077,
+    "name": "Steenberg",
+    "state": "",
+    "country": "ZA",
+    "coord": {
+        "lon": 18.47023,
+        "lat": -34.074421
+    }
+},
+    {
+    "id": 3361084,
+    "name": "Stanford",
+    "state": "",
+    "country": "ZA",
+    "coord": {
+        "lon": 19.45615,
+        "lat": -34.4394
+    }
+},
+    {
+    "id": 3361142,
+    "name": "Springbok",
+    "state": "",
+    "country": "ZA",
+    "coord": {
+        "lon": 17.886499,
+        "lat": -29.664339
+    }
+},
+    {
+    "id": 3361711,
+    "name": "Sea Point",
+    "state": "",
+    "country": "ZA",
+    "coord": {
+        "lon": 18.389681,
+        "lat": -33.918579
+    }
+},
+    {
+    "id": 3361721,
+    "name": "Scottsville",
+    "state": "",
+    "country": "ZA",
+    "coord": {
+        "lon": 18.703711,
+        "lat": -33.855381
+    }
+},
+    {
+    "id": 3361934,
+    "name": "Saldanha",
+    "state": "",
+    "country": "ZA",
+    "coord": {
+        "lon": 17.944201,
+        "lat": -33.011669
+    }
+},
+    {
+    "id": 3362024,
+    "name": "Rosebank",
+    "state": "",
+    "country": "ZA",
+    "coord": {
+        "lon": 18.474171,
+        "lat": -33.955559
+    }
+},
+    {
+    "id": 3362324,
+    "name": "Roggebaai",
+    "state": "",
+    "country": "ZA",
+    "coord": {
+        "lon": 18.433331,
+        "lat": -33.916672
+    }
+},
+    {
+    "id": 3362349,
+    "name": "Robertson",
+    "state": "",
+    "country": "ZA",
+    "coord": {
+        "lon": 19.88537,
+        "lat": -33.803421
+    }
+},
+    {
+    "id": 3362671,
+    "name": "Pringle Bay",
+    "state": "",
+    "country": "ZA",
+    "coord": {
+        "lon": 18.827061,
+        "lat": -34.348179
+    }
+},
+    {
+    "id": 3362764,
+    "name": "Plumstead",
+    "state": "",
+    "country": "ZA",
+    "coord": {
+        "lon": 18.47834,
+        "lat": -34.019089
+    }
+},
+    {
+    "id": 3362864,
+    "name": "Pinelands",
+    "state": "",
+    "country": "ZA",
+    "coord": {
+        "lon": 18.506809,
+        "lat": -33.942219
+    }
+},
+    {
+    "id": 3363094,
+    "name": "Paarl",
+    "state": "",
+    "country": "ZA",
+    "coord": {
+        "lon": 18.975229,
+        "lat": -33.73378
+    }
+},
+    {
+    "id": 3363171,
+    "name": "Oude Raapkraal",
+    "state": "",
+    "country": "ZA",
+    "coord": {
+        "lon": 18.433331,
+        "lat": -34.083328
+    }
+},
+    {
+    "id": 3363222,
+    "name": "Ottery",
+    "state": "",
+    "country": "ZA",
+    "coord": {
+        "lon": 18.505039,
+        "lat": -34.016781
+    }
+},
+    {
+    "id": 3363441,
+    "name": "Ocean View",
+    "state": "",
+    "country": "ZA",
+    "coord": {
+        "lon": 18.353649,
+        "lat": -34.148609
+    }
+},
+    {
+    "id": 3363444,
+    "name": "Observatory",
+    "state": "",
+    "country": "ZA",
+    "coord": {
+        "lon": 18.467871,
+        "lat": -33.936131
+    }
+},
+    {
+    "id": 3363453,
+    "name": "Oakdale",
+    "state": "",
+    "country": "ZA",
+    "coord": {
+        "lon": 18.683331,
+        "lat": -33.833328
+    }
+},
+    {
+    "id": 3363613,
+    "name": "Noorder-Paarl",
+    "state": "",
+    "country": "ZA",
+    "coord": {
+        "lon": 18.965521,
+        "lat": -33.704681
+    }
+},
+    {
+    "id": 3363675,
+    "name": "Nieuwoudtville",
+    "state": "",
+    "country": "ZA",
+    "coord": {
+        "lon": 19.1122,
+        "lat": -31.37656
+    }
+},
+    {
+    "id": 3363901,
+    "name": "Mowbray",
+    "state": "",
+    "country": "ZA",
+    "coord": {
+        "lon": 18.47333,
+        "lat": -33.948021
+    }
+},
+    {
+    "id": 3363913,
+    "name": "Mouille Point",
+    "state": "",
+    "country": "ZA",
+    "coord": {
+        "lon": 18.40531,
+        "lat": -33.900269
+    }
+},
+    {
+    "id": 3363978,
+    "name": "Monte Vista",
+    "state": "",
+    "country": "ZA",
+    "coord": {
+        "lon": 18.55385,
+        "lat": -33.87925
+    }
+},
+    {
+    "id": 3363983,
+    "name": "Montague Gardens",
+    "state": "",
+    "country": "ZA",
+    "coord": {
+        "lon": 18.520321,
+        "lat": -33.863522
+    }
+},
+    {
+    "id": 3364246,
+    "name": "McGregor",
+    "state": "",
+    "country": "ZA",
+    "coord": {
+        "lon": 19.82906,
+        "lat": -33.94725
+    }
+},
+    {
+    "id": 3364346,
+    "name": "Malmesbury",
+    "state": "",
+    "country": "ZA",
+    "coord": {
+        "lon": 18.72714,
+        "lat": -33.4608
+    }
+},
+    {
+    "id": 3364682,
+    "name": "Lansdowne",
+    "state": "",
+    "country": "ZA",
+    "coord": {
+        "lon": 18.497459,
+        "lat": -33.98735
+    }
+},
+    {
+    "id": 3364791,
+    "name": "Langebaanweg",
+    "state": "",
+    "country": "ZA",
+    "coord": {
+        "lon": 18.1488,
+        "lat": -32.974449
+    }
+},
+    {
+    "id": 3364795,
+    "name": "Langebaan",
+    "state": "",
+    "country": "ZA",
+    "coord": {
+        "lon": 18.0315,
+        "lat": -33.097511
+    }
+},
+    {
+    "id": 3365164,
+    "name": "Kortdoorn",
+    "state": "",
+    "country": "ZA",
+    "coord": {
+        "lon": 16.54413,
+        "lat": -28.56181
+    }
+},
+    {
+    "id": 3365617,
+    "name": "Klipdale",
+    "state": "",
+    "country": "ZA",
+    "coord": {
+        "lon": 19.96633,
+        "lat": -34.306171
+    }
+},
+    {
+    "id": 3365707,
+    "name": "Kleinsee",
+    "state": "",
+    "country": "ZA",
+    "coord": {
+        "lon": 17.0709,
+        "lat": -29.677139
+    }
+},
+    {
+    "id": 3365999,
+    "name": "Kenridge",
+    "state": "",
+    "country": "ZA",
+    "coord": {
+        "lon": 18.63633,
+        "lat": -33.85918
+    }
+},
+    {
+    "id": 3366880,
+    "name": "Hermanus",
+    "state": "",
+    "country": "ZA",
+    "coord": {
+        "lon": 19.234461,
+        "lat": -34.418701
+    }
+},
+    {
+    "id": 3366920,
+    "name": "Helderberg",
+    "state": "",
+    "country": "ZA",
+    "coord": {
+        "lon": 18.831129,
+        "lat": -34.030479
+    }
+},
+    {
+    "id": 3366939,
+    "name": "Heathfield",
+    "state": "",
+    "country": "ZA",
+    "coord": {
+        "lon": 18.468081,
+        "lat": -34.047642
+    }
+},
+    {
+    "id": 3367458,
+    "name": "Grassy Park",
+    "state": "",
+    "country": "ZA",
+    "coord": {
+        "lon": 18.498631,
+        "lat": -34.047199
+    }
+},
+    {
+    "id": 3367513,
+    "name": "Grabouw",
+    "state": "",
+    "country": "ZA",
+    "coord": {
+        "lon": 19.015091,
+        "lat": -34.15152
+    }
+},
+    {
+    "id": 3367527,
+    "name": "Graafwater",
+    "state": "",
+    "country": "ZA",
+    "coord": {
+        "lon": 18.603189,
+        "lat": -32.154659
+    }
+},
+    {
+    "id": 3367573,
+    "name": "Goodwood",
+    "state": "",
+    "country": "ZA",
+    "coord": {
+        "lon": 18.548809,
+        "lat": -33.904919
+    }
+},
+    {
+    "id": 3367634,
+    "name": "Glen Dirk",
+    "state": "",
+    "country": "ZA",
+    "coord": {
+        "lon": 18.44351,
+        "lat": -33.994331
+    }
+},
+    {
+    "id": 3367877,
+    "name": "Franschhoek",
+    "state": "",
+    "country": "ZA",
+    "coord": {
+        "lon": 19.119801,
+        "lat": -33.910751
+    }
+},
+    {
+    "id": 3368039,
+    "name": "Elsiesrivier",
+    "state": "",
+    "country": "ZA",
+    "coord": {
+        "lon": 18.585409,
+        "lat": -33.930729
+    }
+},
+    {
+    "id": 3368192,
+    "name": "Edgemead",
+    "state": "",
+    "country": "ZA",
+    "coord": {
+        "lon": 18.53977,
+        "lat": -33.87241
+    }
+},
+    {
+    "id": 3368439,
+    "name": "Drieankerbaai",
+    "state": "",
+    "country": "ZA",
+    "coord": {
+        "lon": 18.395741,
+        "lat": -33.909069
+    }
+},
+    {
+    "id": 3368538,
+    "name": "Doordrift",
+    "state": "",
+    "country": "ZA",
+    "coord": {
+        "lon": 18.455721,
+        "lat": -34.01915
+    }
+},
+    {
+    "id": 3368962,
+    "name": "Darling",
+    "state": "",
+    "country": "ZA",
+    "coord": {
+        "lon": 18.379379,
+        "lat": -33.37817
+    }
+},
+    {
+    "id": 3369035,
+    "name": "Crossroads",
+    "state": "",
+    "country": "ZA",
+    "coord": {
+        "lon": 18.59598,
+        "lat": -33.99445
+    }
+},
+    {
+    "id": 3369056,
+    "name": "Constantia",
+    "state": "",
+    "country": "ZA",
+    "coord": {
+        "lon": 18.418329,
+        "lat": -34.031391
+    }
+},
+    {
+    "id": 3369083,
+    "name": "Clovelly",
+    "state": "",
+    "country": "ZA",
+    "coord": {
+        "lon": 18.43276,
+        "lat": -34.12487
+    }
+},
+    {
+    "id": 3369086,
+    "name": "Cloetesville",
+    "state": "",
+    "country": "ZA",
+    "coord": {
+        "lon": 18.85507,
+        "lat": -33.912392
+    }
+},
+    {
+    "id": 3369090,
+    "name": "Clifton",
+    "state": "",
+    "country": "ZA",
+    "coord": {
+        "lon": 18.379141,
+        "lat": -33.93684
+    }
+},
+    {
+    "id": 3369098,
+    "name": "Claremont",
+    "state": "",
+    "country": "ZA",
+    "coord": {
+        "lon": 18.465281,
+        "lat": -33.98056
+    }
+},
+    {
+    "id": 3369129,
+    "name": "Ceres",
+    "state": "",
+    "country": "ZA",
+    "coord": {
+        "lon": 19.310961,
+        "lat": -33.368889
+    }
+},
+    {
+    "id": 3369157,
+    "name": "Cape Town",
+    "state": "",
+    "country": "ZA",
+    "coord": {
+        "lon": 18.42322,
+        "lat": -33.925838
+    }
+},
+    {
+    "id": 3369174,
+    "name": "Calvinia",
+    "state": "",
+    "country": "ZA",
+    "coord": {
+        "lon": 19.776011,
+        "lat": -31.47069
+    }
+},
+    {
+    "id": 3369179,
+    "name": "Caledon",
+    "state": "",
+    "country": "ZA",
+    "coord": {
+        "lon": 19.4265,
+        "lat": -34.229969
+    }
+},
+    {
+    "id": 3369183,
+    "name": "Cafda Village",
+    "state": "",
+    "country": "ZA",
+    "coord": {
+        "lon": 18.485701,
+        "lat": -34.059978
+    }
+},
+    {
+    "id": 3370147,
+    "name": "Belhar",
+    "state": "",
+    "country": "ZA",
+    "coord": {
+        "lon": 18.62701,
+        "lat": -33.944809
+    }
+},
+    {
+    "id": 3370221,
+    "name": "Banghoek",
+    "state": "",
+    "country": "ZA",
+    "coord": {
+        "lon": 18.91667,
+        "lat": -33.916672
+    }
+},
+    {
+    "id": 3370331,
+    "name": "Aurora",
+    "state": "",
+    "country": "ZA",
+    "coord": {
+        "lon": 18.48514,
+        "lat": -32.705959
+    }
+},
+    {
+    "id": 3370352,
+    "name": "Atlantis",
+    "state": "",
+    "country": "ZA",
+    "coord": {
+        "lon": 18.483351,
+        "lat": -33.566681
+    }
+}
+]
+
