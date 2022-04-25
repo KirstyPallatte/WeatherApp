@@ -66,6 +66,7 @@ extension FavouriteLocationsViewController: UITableViewDataSource, UITableViewDe
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "CurrentWeatherViewController", sender: self)
+        reloadView()
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
