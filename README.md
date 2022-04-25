@@ -17,11 +17,27 @@ master ( buid )
 
 ### :camera_flash: Screenshots
 
-#### View 5 day forecast and todays current weather
+#### View 5 day forecast and todays current weather Online
 <table>
 <tr>
-<td><img src="https://user-images.githubusercontent.com/98941706/164638509-c263c857-bbc6-45f4-9130-4cf8be3d61bb.png" alt="sea forecast view" height=400 width=200></td>
-<td><img src="https://user-images.githubusercontent.com/98941706/164638562-85d971bc-d849-4954-8a8d-608066a27177.png" alt="forest forecast view" height=400 width=200></td>
+<td><img src="https://user-images.githubusercontent.com/98941706/165125442-8191fe9f-b5ed-42d4-8ce4-34105f5b15de.png" alt="forest forecast view online" height=400 width=200></td>
+<td><img src="https://user-images.githubusercontent.com/98941706/165125454-3dc0229c-e4f0-4a6d-bbc5-4a5359e1ebc2.png" alt="sea forecast view online" height=400 width=200></td>
+</tr>
+</table>
+
+#### View and Search For Favourite Locations
+<table>
+<tr>
+<td><img src="https://user-images.githubusercontent.com/98941706/165125681-cb299f53-0f8f-4f48-b2ca-65fba73c0b6a.png" alt="view favourite locations" height=400 width=200></td>
+<td><img src="https://user-images.githubusercontent.com/98941706/165125969-2d8c4c9b-fa96-40a2-833e-14b0e3d3f412.png" alt="search for favourites" height=400 width=200></td>
+</tr>
+</table>
+
+#### View 5 day forecast and todays current weather Offline
+<table>
+<tr>
+<td><img src="https://user-images.githubusercontent.com/98941706/165126082-b4f52be0-c8b1-424f-be8a-171588d8da43.png" alt="forest forecast view offline" height=400 width=200></td>
+<td><img src="https://user-images.githubusercontent.com/98941706/165126907-39c13cbc-2c7c-44bd-9aec-104ca4e45c74.png" alt="sea forecast view offline" height=400 width=200></td>
 </tr>
 </table>
 
