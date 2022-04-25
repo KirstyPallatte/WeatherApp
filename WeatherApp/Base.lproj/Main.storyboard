@@ -14,11 +14,11 @@
             <objects>
                 <viewController id="cFI-Ks-HvT" customClass="CurrentWeatherViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sIN-dx-j7g">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="NNd-DF-GTf" userLabel="Current Weather">
-                                <rect key="frame" x="0.0" y="140" width="420" height="377"/>
+                                <rect key="frame" x="0.0" y="0.0" width="420" height="377"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="forest_sunny" translatesAutoresizingMaskIntoConstraints="NO" id="rtd-FW-Z0i">
                                         <rect key="frame" x="0.0" y="0.0" width="420" height="321"/>
@@ -87,19 +87,19 @@
                                 </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25 °" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LKl-KF-Q0k">
-                                <rect key="frame" x="169.5" y="230" width="75.5" height="50.5"/>
+                                <rect key="frame" x="169.5" y="90" width="75.5" height="50.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="42"/>
                                 <color key="textColor" systemColor="systemBackgroundColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SUNNY" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V47-MC-eBG">
-                                <rect key="frame" x="156.5" y="282.5" width="101" height="36"/>
+                                <rect key="frame" x="156.5" y="142.5" width="101" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <color key="textColor" systemColor="systemBackgroundColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v6D-da-142">
-                                <rect key="frame" x="20" y="172" width="70" height="33.5"/>
+                                <rect key="frame" x="20" y="32" width="70" height="33.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="28"/>
                                 <color key="textColor" systemColor="systemBackgroundColor"/>
                                 <nil key="highlightedColor"/>
@@ -233,11 +233,11 @@
             <objects>
                 <viewController id="Xs3-Bz-cpJ" customClass="SearchCityViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lTL-Ea-lw6">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="cWz-5S-VIh">
-                                <rect key="frame" x="0.0" y="156" width="414" height="681"/>
+                                <rect key="frame" x="0.0" y="16" width="414" height="767"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <searchBar key="tableHeaderView" contentMode="redraw" id="d0I-vP-rV9">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
@@ -245,7 +245,7 @@
                                     <textInputTraits key="textInputTraits"/>
                                 </searchBar>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="YbL-Cx-beL">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell" id="YbL-Cx-beL">
                                         <rect key="frame" x="0.0" y="88.5" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YbL-Cx-beL" id="XnC-tS-wlw">
@@ -274,7 +274,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cwx-yq-sCc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-23" y="684"/>
+            <point key="canvasLocation" x="1057" y="684"/>
         </scene>
         <!--Favourites-->
         <scene sceneID="COA-Qw-5P7">
@@ -285,7 +285,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="9jm-UH-FNU" userLabel="Parent">
-                                <rect key="frame" x="20" y="140" width="374" height="722"/>
+                                <rect key="frame" x="20" y="44" width="374" height="818"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H3d-j2-ZFM">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="10"/>
@@ -295,13 +295,13 @@
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" translatesAutoresizingMaskIntoConstraints="NO" id="w7o-Ck-fF2" userLabel="Body">
-                                        <rect key="frame" x="0.0" y="30" width="374" height="692"/>
+                                        <rect key="frame" x="0.0" y="30" width="374" height="788"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="C3H-5F-ChX" userLabel="Table">
-                                                <rect key="frame" x="0.0" y="0.0" width="374" height="692"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="788"/>
                                                 <subviews>
                                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="kE7-tj-8he">
-                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="692"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="788"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <prototypes>
                                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="favouriteCell" rowHeight="264" id="QiN-ka-3zP" customClass="FavouriteTableViewCell" customModule="WeatherApp" customModuleProvider="target">
@@ -401,8 +401,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="favouriteCityTableview" destination="kE7-tj-8he" id="Pov-Mu-aEK"/>
-                        <segue destination="2aT-gY-M9n" kind="show" identifier="SearchCityViewController" id="NBQ-gw-mIL"/>
                         <segue destination="cFI-Ks-HvT" kind="show" identifier="CurrentWeatherViewController" id="2Nk-rP-4kH"/>
+                        <segue destination="Xs3-Bz-cpJ" kind="show" identifier="SearchCityViewController" id="JjA-P3-iil"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2IT-vp-0aj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -425,7 +425,6 @@
                     <connections>
                         <segue destination="I6k-KP-7rM" kind="relationship" relationship="viewControllers" id="nbO-2i-hpl"/>
                         <segue destination="zeK-6J-knR" kind="relationship" relationship="viewControllers" id="Ctf-kK-64u"/>
-                        <segue destination="2aT-gY-M9n" kind="relationship" relationship="viewControllers" id="9Zl-0w-seN"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6H2-Eg-7zB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -471,30 +470,8 @@
             </objects>
             <point key="canvasLocation" x="3064" y="-370"/>
         </scene>
-        <!--Search-->
-        <scene sceneID="R0t-oq-2gv">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2aT-gY-M9n" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Search" image="magnifyingglass" catalog="system" selectedImage="magnifyingglass" id="Ejt-kP-WAw"/>
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" id="MVr-dW-N7U"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="tg2-ab-T4b">
-                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="Xs3-Bz-cpJ" kind="relationship" relationship="rootViewController" id="5B2-eq-grG"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="bK4-Ml-Pux" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-23.188405797101453" y="-370.3125"/>
-        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="5B2-eq-grG"/>
-        <segue reference="NBQ-gw-mIL"/>
         <segue reference="h45-qD-I7n"/>
         <segue reference="2Nk-rP-4kH"/>
     </inferredMetricsTieBreakers>
@@ -502,7 +479,6 @@
         <image name="clear" width="13" height="13"/>
         <image name="folder.fill" catalog="system" width="128" height="97"/>
         <image name="forest_sunny" width="360" height="321"/>
-        <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>
         <image name="sun.max.fill" catalog="system" width="128" height="124"/>
