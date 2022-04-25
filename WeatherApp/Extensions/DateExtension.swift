@@ -11,4 +11,9 @@ extension Date {
     func dayNumberOfWeek() -> Int? {
         return Calendar.current.dateComponents([.weekday], from: self).weekday
     }
+    
+    func todaysTimestamp() -> String {
+        let timestamp = DateFormatter.localizedString(from: NSDate() as Date, dateStyle: .medium , timeStyle: .short)
+        return timestamp
+    }
 }

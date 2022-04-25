@@ -5,7 +5,29 @@
         <attribute name="locationName" optional="YES" attributeType="String"/>
         <attribute name="longitude" optional="YES" attributeType="Double" usesScalarValueType="YES"/>
     </entity>
+    <entity name="OfflineFiveDayForecast" representedClassName=".OfflineFiveDayForecast" syncable="YES" codeGenerationType="class">
+        <attribute name="condition1" optional="YES" attributeType="String"/>
+        <attribute name="condition2" optional="YES" attributeType="String"/>
+        <attribute name="condition3" optional="YES" attributeType="String"/>
+        <attribute name="condition4" optional="YES" attributeType="String"/>
+        <attribute name="condition5" optional="YES" attributeType="String"/>
+        <attribute name="temperatureDay1" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="temperatureDay2" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="temperatureDay3" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="temperatureDay4" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="temperatureDay5" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+    </entity>
+    <entity name="OfflineWeather" representedClassName=".OfflineWeather" syncable="YES" codeGenerationType="class">
+        <attribute name="cityName" optional="YES" attributeType="String"/>
+        <attribute name="currentCondition" optional="YES" attributeType="String"/>
+        <attribute name="currentTemp" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="maxTemp" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="minTemp" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="timeLastUpdated" optional="YES" attributeType="String"/>
+    </entity>
     <elements>
-        <element name="Favourites" positionX="-63" positionY="-18" width="128" height="74"/>
+        <element name="Favourites" positionX="-507.9453125" positionY="29.3046875" width="128" height="74"/>
+        <element name="OfflineWeather" positionX="-244.9375" positionY="12.0078125" width="128" height="133"/>
+        <element name="OfflineFiveDayForecast" positionX="-54" positionY="117" width="128" height="179"/>
     </elements>
 </model>

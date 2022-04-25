@@ -20,9 +20,11 @@ class CurrentWeatherViewController: UIViewController {
     @IBOutlet weak private var maxTempLabel: UILabel!
     @IBOutlet weak private var cityNameLabel: UILabel!
     @IBOutlet weak private var weatherTableView: UITableView!
-    
+    @IBOutlet weak private var timestampLabel: UILabel!
+
     // MARK: - Vars/Lets
     private lazy var currentWeatherViewModel = CurrentWeatherViewModel(repository: CurrentWeatherRepository(),
+                                                                       repositoryOffline: WeatherOfflineRepository(), 
                                                                        delegate: self)
     private lazy var locationManager = CLLocationManager()
     private var isImagePressed = false
@@ -33,6 +35,7 @@ class CurrentWeatherViewController: UIViewController {
         super.viewDidLoad()
         setUpTableview()
         setUpTodaysWeather()
+        self.title = currentWeatherViewModel.phoneConnectivityStatus + " Weather"
     }
     
     // MARK: - @IBAction
@@ -57,20 +60,118 @@ class CurrentWeatherViewController: UIViewController {
     }
     
     private func setUpTodaysWeather() {
-        currentWeatherViewModel.fetchCurrentWeatherResults { _ in
-            guard let currentWeather = self.currentWeatherViewModel.objectCurrentWeather else { return }
-            self.updateUpUICurrentWeather(currentWeather: currentWeather)
+        var isCurrentWeatherSavedInLocalDatabase = false
+        var isForecastWeatherSavedInLocalDatabase = false
+        
+        if !currentWeatherViewModel.isPhoneOffline {
+            currentWeatherViewModel.fetchCurrentWeatherResults { _ in
+                isCurrentWeatherSavedInLocalDatabase = self.currentWeatherViewModel.isCurrentLocalDatabseWeatherEmpty()
+                isForecastWeatherSavedInLocalDatabase =  self.currentWeatherViewModel.isForecastLocalDatabseWeatherEmpty()
+                
+                if isCurrentWeatherSavedInLocalDatabase && isForecastWeatherSavedInLocalDatabase {
+                    self.fetchFiveDayForecastData()
+                    self.updateUICurrentWeather()
+                } else {
+                    self.updateCurrentWetherInLocalDatabase()
+                    self.fetchFiveDayForecastData()
+                    self.updateForecastWetherInLocalDatabase()
+                    self.updateUICurrentWeather()
+                }
+            }
+        } else {
+            currentWeatherViewModel.fetchOfflineCurrentWeatherResults()
+            currentWeatherViewModel.fetchOfflineFiveDayForecastWeatherResults()
+            self.updateUICurrentWeather()
         }
+    }
+    
+    func fetchFiveDayForecastData() {
         
         currentWeatherViewModel.fetchForecastCurrentWeatherResults { _ in
             guard self.currentWeatherViewModel.objectForecastWeather != nil else { return }
+            self.saveForecastWetherInLocalDatabase()
             self.weatherTableView.reloadData()
         }
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    // MARK: - Local database
+    func saveCurrentWetherInLocalDatabase() {
         guard let currentWeather = self.currentWeatherViewModel.objectCurrentWeather else { return }
-        guard let locationName = currentWeather.name else { return }
+        guard let nameCity = currentWeather.name else { return }
+        guard let currentCondition = currentWeather.weather?[0].main else { return }
+        guard let currentTemp = currentWeather.main?.temp else { return }
+        guard let minTemp = currentWeather.main?.tempMin else { return }
+        guard let maxTemp = currentWeather.main?.tempMin else { return }
+        currentWeatherViewModel.saveCurrentWeatherInLocalDatabase(nameCity: nameCity,
+                                                                  currentCondition: currentCondition,
+                                                                  currentTemperature: currentTemp,
+                                                                  maxTemperature: minTemp,
+                                                                  minTemperature: maxTemp)
+    }
+    
+    func saveForecastWetherInLocalDatabase() {
+        guard let forecastWeatherCount = currentWeatherViewModel.objectForecastWeather?.list.count else { return }
+        var conditionArr = [String]()
+        var temperatureArr = [Double]()
+        for index in 0..<forecastWeatherCount {
+            guard let temperature = currentWeatherViewModel.objectForecastWeather?.list[index].main.temp,
+                  let weatherCondition = currentWeatherViewModel.objectForecastWeather?.list[index].weather[0].main.lowercased() else { return }
+            conditionArr.append(weatherCondition)
+            temperatureArr.append(temperature)
+            
+        }
+        currentWeatherViewModel.saveCurrentForecastInLocalDatabase(condition1: conditionArr[0],
+                                                                   condition2: conditionArr[1],
+                                                                   condition3: conditionArr[2],
+                                                                   condition4: conditionArr[3],
+                                                                   condition5: conditionArr[4],
+                                                                   temperatureDay1: temperatureArr[0],
+                                                                   temperatureDay2: temperatureArr[1],
+                                                                   temperatureDay3: temperatureArr[2],
+                                                                   temperatureDay4: temperatureArr[3],
+                                                                   temperatureDay5: temperatureArr[4])
+    }
+    
+    func updateCurrentWetherInLocalDatabase() {
+        guard let currentWeather = self.currentWeatherViewModel.objectCurrentWeather,
+        let nameCity = currentWeather.name,
+        let currentCondition = currentWeather.weather?[0].main,
+        let currentTemp = currentWeather.main?.temp,
+        let minTemp = currentWeather.main?.tempMin,
+        let maxTemp = currentWeather.main?.tempMin else { return }
+        currentWeatherViewModel.updateCurrentWeatherInLocalDatabase(nameCity: nameCity,
+                                                                    currentCondition: currentCondition,
+                                                                    currentTemperature: currentTemp,
+                                                                    maxTemperature: minTemp,
+                                                                    minTemperature: maxTemp)
+    }
+    
+    func updateForecastWetherInLocalDatabase() {
+        guard let forecastWeatherCount = currentWeatherViewModel.objectForecastWeather?.list.count else { return }
+        var conditionArr = [String]()
+        var temperatureArr = [Double]()
+        for index in 0..<forecastWeatherCount {
+            guard let temperature = currentWeatherViewModel.objectForecastWeather?.list[index].main.temp,
+                  let weatherCondition = currentWeatherViewModel.objectForecastWeather?.list[index].weather[0].main.lowercased() else { return }
+            conditionArr.append(weatherCondition)
+            temperatureArr.append(temperature)
+            
+        }
+        currentWeatherViewModel.updateCurrentForecastInLocalDatabase(condition1: conditionArr[0],
+                                                                     condition2: conditionArr[1],
+                                                                     condition3: conditionArr[2],
+                                                                     condition4: conditionArr[3],
+                                                                     condition5: conditionArr[4],
+                                                                     temperatureDay1: temperatureArr[0],
+                                                                     temperatureDay2: temperatureArr[1],
+                                                                     temperatureDay3: temperatureArr[2],
+                                                                     temperatureDay4: temperatureArr[3],
+                                                                     temperatureDay5: temperatureArr[4])
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let currentWeather = self.currentWeatherViewModel.objectCurrentWeather,
+        let locationName = currentWeather.name else { return }
         let locationLattitude = currentWeather.coord.lat
         let locationLogitude = currentWeather.coord.lon
         if let destination = segue.destination as? FavouriteLocationsViewController {
@@ -82,20 +183,50 @@ class CurrentWeatherViewController: UIViewController {
         
     }
     
-    private func updateUpUICurrentWeather(currentWeather: CurrentWeather) {
-        guard let currentTemp = currentWeather.main?.temp else { return }
-        guard let minTemp = currentWeather.main?.tempMin else { return }
-        guard let maxTemp = currentWeather.main?.tempMin else { return }
-        guard let nameCity = currentWeather.name else { return }
-        guard let currentCondition = currentWeather.weather?[0].main else { return }
+    private func updateUICurrentWeather() {
+        
+        if self.currentWeatherViewModel.isPhoneOffline {
+            guard let currentWeatherOffline = self.currentWeatherViewModel.objectOfflineCurrentWeather else { return }
+            setForecastWeatherOnline(currentWeather: currentWeatherOffline)
+        } else {
+            guard let currentWeather = self.currentWeatherViewModel.objectCurrentWeather else { return }
+            setCurrentWeatherOnline(currentWeather: currentWeather)
+        }
+    }
+    
+    func setCurrentWeatherOnline(currentWeather: CurrentWeather) {
+
+        guard let nameCity = currentWeather.name,
+        let currentCondition = currentWeather.weather?[0].main,
+        let currentTemp = currentWeather.main?.temp,
+        let minTemp = currentWeather.main?.tempMin,
+        let maxTemp = currentWeather.main?.tempMin else { return }
         let imageCondition = currentWeatherViewModel.setBackgroundimage()
+
         setWeatherUI(currentTemp: currentTemp,
                      minTemp: minTemp,
                      maxTemp: maxTemp,
                      nameCity: nameCity,
                      imageCondition: imageCondition,
                      currentCondition: currentCondition)
-        setBackgroundColoursCurrentWeather(currentWeather: currentWeather)
+        setBackgroundColoursCurrentWeather()
+    }
+    
+    func setForecastWeatherOnline(currentWeather: OfflineWeather) {
+        guard let nameCity = currentWeather.cityName,
+        let currentCondition = currentWeather.currentCondition else { return }
+        let currentTemp = currentWeather.currentTemp
+        let minTemp = currentWeather.minTemp
+        let maxTemp = currentWeather.minTemp
+        let imageCondition = currentWeatherViewModel.setBackgroundimage()
+
+        setWeatherUI(currentTemp: currentTemp,
+                     minTemp: minTemp,
+                     maxTemp: maxTemp,
+                     nameCity: nameCity,
+                     imageCondition: imageCondition,
+                     currentCondition: currentCondition)
+        setBackgroundColoursCurrentWeather()
     }
     
     private func setWeatherUI(currentTemp: Double,
@@ -105,6 +236,7 @@ class CurrentWeatherViewController: UIViewController {
                               imageCondition:  String,
                               currentCondition: String) {
         currentTempValueLabel.text = currentTemp.description + "°"
+        timestampLabel.text = "Last update: " + currentWeatherViewModel.lastUpdatedDateTime
         currentTempLabel.text = currentTemp.description + "°"
         minTempLabel.text = minTemp.description + "°"
         maxTempLabel.text = maxTemp.description  + "°"
@@ -114,8 +246,18 @@ class CurrentWeatherViewController: UIViewController {
 
     }
     
-    private func setBackgroundColoursCurrentWeather(currentWeather: CurrentWeather) {
-        guard let weatherConditionType = currentWeather.weather?[0].main.lowercased() else { return }
+    private func setBackgroundColoursCurrentWeather() {
+        
+        var weatherConditionType: String
+
+        if self.currentWeatherViewModel.isPhoneOffline {
+            guard let currentWeatherOffline = self.currentWeatherViewModel.objectOfflineCurrentWeather else { return }
+            weatherConditionType = currentWeatherOffline.currentCondition?.lowercased() ?? "sunny"
+        } else {
+            guard let currentWeather = self.currentWeatherViewModel.objectCurrentWeather else { return }
+            weatherConditionType = currentWeather.weather?[0].main.lowercased() ?? "sunny"
+        }
+
         let weatherCondition = WeatherCondition.init(rawValue: weatherConditionType)
         var backgroundColour: UIColor
         switch weatherCondition {
@@ -194,30 +336,56 @@ extension CurrentWeatherViewController: CurrentWeatherViewModelDelegate {
 // MARK: - Extension - UITableViewDelegate and DataSource
 extension CurrentWeatherViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let forecastWeatherCount = currentWeatherViewModel.objectForecastWeather?.list.count else { return 0 }
+
+        var forecastWeatherCount = 0
+        if !currentWeatherViewModel.isPhoneOffline {
+            forecastWeatherCount = currentWeatherViewModel.objectForecastWeather?.list.count ?? 0
+        } else {
+            forecastWeatherCount = currentWeatherViewModel.objectOfflineForecastWeather?.condition1?.count ?? 0
+        }
         return forecastWeatherCount
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var imageIcon: UIImage
+        var forecastWeatherCount = 0
+        let temperatureArr: [Double] = currentWeatherViewModel.arrayWeatherForecastTemperatures
+        let conditionArr: [String] = currentWeatherViewModel.arrayWeatherForecastConditions
+        
         guard let cell = tableView.dequeueReusableCell(withIdentifier: FiveDayForecastTableViewCell.identifier,
                                                        for: indexPath) as? FiveDayForecastTableViewCell
         else { return UITableViewCell() }
 
-        guard let forecastWeatherCount = currentWeatherViewModel.objectForecastWeather?.list.count else { return UITableViewCell() }
+        if !currentWeatherViewModel.isPhoneOffline {
+            forecastWeatherCount = currentWeatherViewModel.objectForecastWeather?.list.count ?? 0
+        } else {
+            forecastWeatherCount = 5
+        }
 
         if indexPath.row > forecastWeatherCount - 1 {
             return UITableViewCell()
         } else {
-            guard let temperature = currentWeatherViewModel.objectForecastWeather?.list[indexPath.row].main.temp else { return UITableViewCell() }
-            guard let weatherCondition = currentWeatherViewModel.objectForecastWeather?.list[indexPath.row].weather[0].main.lowercased()
+            
+            if !currentWeatherViewModel.isPhoneOffline {
+               guard let temperature = currentWeatherViewModel.objectForecastWeather?.list[indexPath.row].main.temp else { return UITableViewCell() }
+               guard let weatherCondition = currentWeatherViewModel.objectForecastWeather?.list[indexPath.row].weather[0].main.lowercased()
             else { return UITableViewCell() }
-            guard let colour =  overallBackgroundColour else { return UITableViewCell() }
-            imageIcon = setIconForecastWeather(currentCondition: weatherCondition)
-            cell.setCellItems(temperature: temperature,
+               guard let colour =  overallBackgroundColour else { return UITableViewCell() }
+               imageIcon = setIconForecastWeather(currentCondition: weatherCondition)
+               cell.setCellItems(temperature: temperature,
                               day: currentWeatherViewModel.dayOfWeeekArray(index: indexPath.row),
                               colour: colour,
                               imageIcon: imageIcon)
+            } else {
+                let temperatureForecast = temperatureArr[indexPath.row]
+                let weatherConditionForecast = conditionArr[indexPath.row]
+                guard let colour =  overallBackgroundColour else { return UITableViewCell() }
+                imageIcon = setIconForecastWeather(currentCondition: weatherConditionForecast)
+                cell.setCellItems(temperature: temperatureForecast,
+                                  day: currentWeatherViewModel.dayOfWeeekArray(index: indexPath.row),
+                                  colour: colour,
+                                  imageIcon: imageIcon)
+        }
         }
         return cell
     }
