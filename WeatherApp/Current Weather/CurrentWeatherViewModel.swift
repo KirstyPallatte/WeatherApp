@@ -20,8 +20,14 @@ class CurrentWeatherViewModel: NSObject {
     
     // MARK: - Vars/Lets
     private var currentWeatherRepository: SearchCurrentWeatherRepositoryType?
+    private var offlineWeatherRepository: WeatherOfflineRepository?
     private weak var delegate: CurrentWeatherViewModelDelegate?
     private var currentWeatherObject: CurrentWeather?
+    
+    private var currentOfflineWeatherObject: OfflineWeather?
+    private var forcastOfflineWeatherObject: OfflineFiveDayForecast?
+    private var isOffline = true
+
     private var forcastObject: ForecastData?
     private lazy var locationManager = CLLocationManager()
     private lazy var isChangeImagePressed = false
@@ -41,23 +47,71 @@ class CurrentWeatherViewModel: NSObject {
         return forcastObject
     }
     
+    var objectOfflineCurrentWeather: OfflineWeather? {
+        return currentOfflineWeatherObject
+    }
+    
+    var objectOfflineForecastWeather: OfflineFiveDayForecast? {
+        return forcastOfflineWeatherObject
+    }
+    
     var isPressed: Bool? {
         return isChangeImagePressed
     }
     
-    func setFavLatLong(cityLattitude: Double, cityLongitude: Double) {
-        favLattiude = cityLattitude
-        favLongitude = cityLongitude
+    var isPhoneOffline: Bool {
+        return isOffline
+    }
+    
+    var lastUpdatedDateTime: String {
+        return Date().todaysTimestamp()
+    }
+
+    var phoneConnectivityStatus: String {
+        return isPhoneOffline ? "Offline" : "Online"
+    }
+    
+    var arrayWeatherForecastTemperatures: [Double] {
+        var temperatureArr: [Double] = []
+        guard let temp1 = objectOfflineForecastWeather?.temperatureDay1 else { return temperatureArr }
+        guard let temp2 =  objectOfflineForecastWeather?.temperatureDay2 else { return temperatureArr }
+        guard let temp3 =  objectOfflineForecastWeather?.temperatureDay3 else { return temperatureArr }
+        guard let temp4 =  objectOfflineForecastWeather?.temperatureDay4 else { return temperatureArr }
+        guard let temp5 =  objectOfflineForecastWeather?.temperatureDay5 else { return temperatureArr }
+        temperatureArr = [temp1, temp2, temp3, temp4, temp5]
+        return temperatureArr
+    }
+    
+    var arrayWeatherForecastConditions: [String] {
+        var conditonArr: [String] = []
+        guard let condition1 = objectOfflineForecastWeather?.condition1 else { return conditonArr }
+        guard let condition2 =  objectOfflineForecastWeather?.condition2 else { return conditonArr }
+        guard let condition3 =  objectOfflineForecastWeather?.condition3 else { return conditonArr }
+        guard let condition4 =  objectOfflineForecastWeather?.condition4 else { return conditonArr }
+        guard let condition5 =  objectOfflineForecastWeather?.condition5 else { return conditonArr }
+        conditonArr = [condition1, condition2, condition3, condition4, condition5]
+        return conditonArr
     }
     
     // MARK: - Constructor
-    init(repository: SearchCurrentWeatherRepositoryType,
+    init(repository: SearchCurrentWeatherRepositoryType, repositoryOffline: WeatherOfflineRepository,
          delegate: CurrentWeatherViewModelDelegate) {
          super.init()
          self.currentWeatherRepository = repository
+         self.offlineWeatherRepository = repositoryOffline
          self.delegate = delegate
          locationManager.delegate = self
-         setUpLocationData()
+         let internetReachability = Reachability()
+        
+        if internetReachability.isConnectedToNetwork() {
+            print("Connected to the internet")
+            isOffline = false
+            setUpLocationData()
+        } else {
+            print("No internet connection")
+            isOffline = true
+        }
+        
          weekDay()
          setweekDayArr()
     }
@@ -105,18 +159,149 @@ class CurrentWeatherViewModel: NSObject {
         }
     }
     
+    func isCurrentLocalDatabseWeatherEmpty() -> Bool {
+        guard let bCurrentWeatherIsEmpty = offlineWeatherRepository?.checkIfLocalDatabaseCurrentWeatherIsEmpty() else { return true }
+        return bCurrentWeatherIsEmpty
+    }
+    
+    func isForecastLocalDatabseWeatherEmpty() -> Bool {
+        guard let bCurrentWeatherIsEmpty = offlineWeatherRepository?.checkIfLocalDatabaseForecastWeatherIsEmpty() else { return true }
+        return bCurrentWeatherIsEmpty
+    }
+    
+    // MARK: - Local Database function fetch
+    func fetchOfflineCurrentWeatherResults() {
+        offlineWeatherRepository?.fetchSavedOfflineWeather { [weak self] savedWeather in
+            switch savedWeather {
+            case .success(let savedWeatherData):
+                self?.currentOfflineWeatherObject = savedWeatherData
+            case .failure:
+                self?.delegate?.showError(error: "Unable to get offline data",
+                                          message: "There was a problem fetching offline weather data")
+            }
+        }
+    }
+    
+    func fetchOfflineFiveDayForecastWeatherResults() {
+        offlineWeatherRepository?.fetchFiveDayForecastWeather { [weak self] savedForecatWeather in
+            switch savedForecatWeather {
+            case .success(let savedsavedForecatWeatherData):
+                self?.forcastOfflineWeatherObject = savedsavedForecatWeatherData
+                self?.delegate?.reloadView()
+            case .failure:
+                self?.delegate?.showError(error: "Unable to get offline data",
+                                          message: "There was a problem fetching offline forecast data")
+            }
+        }
+    }
+    
+    // MARK: - Local Database function save
+    func saveCurrentWeatherInLocalDatabase(nameCity: String,
+                                           currentCondition: String,
+                                           currentTemperature: Double,
+                                           maxTemperature: Double,
+                                           minTemperature: Double) {
+        offlineWeatherRepository?.saveOfflineCurrentWeather(cityName: nameCity,
+                                                            currentCondition: currentCondition,
+                                                            currentTemp: currentTemperature,
+                                                            maxTemp: maxTemperature,
+                                                            minTemp: minTemperature,
+                                                            dateTime: lastUpdatedDateTime) { [weak self] savedWeather in
+            switch savedWeather {
+            case .success:
+                self?.delegate?.reloadView()
+            case .failure:
+                self?.delegate?.showError(error: "Unable to save \(nameCity)",
+                                          message: "There was a problem saving offline weather data")
+            }
+            self?.fetchOfflineCurrentWeatherResults()
+        }
+    }
+    
+    func saveCurrentForecastInLocalDatabase(condition1: String,
+                                            condition2: String,
+                                            condition3: String,
+                                            condition4: String,
+                                            condition5: String,
+                                            temperatureDay1: Double,
+                                            temperatureDay2: Double,
+                                            temperatureDay3: Double,
+                                            temperatureDay4: Double,
+                                            temperatureDay5: Double) {
+        offlineWeatherRepository?.saveOfflineFiveDayForecastWeather(conditionDay1: condition1,
+                                                                    conditionDay2: condition2,
+                                                                    conditionDay3: condition3,
+                                                                    conditionDay4: condition4,
+                                                                    conditionDay5: condition5,
+                                                                    tempDay1: temperatureDay1,
+                                                                    tempDay2: temperatureDay2,
+                                                                    tempDay3: temperatureDay3,
+                                                                    tempDay4: temperatureDay4,
+                                                                    tempDay5: temperatureDay5) { [weak self] savedForecastWeather in
+            switch savedForecastWeather {
+            case .success:
+                self?.delegate?.reloadView()
+            case .failure:
+                self?.delegate?.showError(error: "Unable to save offline weather",
+                                          message: "There was a problem saving offline weather data")
+            }
+            self?.fetchOfflineCurrentWeatherResults()
+        }
+    }
+    
+    // MARK: - Local Database function save
+    func updateCurrentWeatherInLocalDatabase(nameCity: String,
+                                             currentCondition: String,
+                                             currentTemperature: Double,
+                                             maxTemperature: Double,
+                                             minTemperature: Double) {
+        offlineWeatherRepository?.updateCurrentWeather(cityName: nameCity,
+                                                            currentCondition: currentCondition,
+                                                            currentTemp: currentTemperature,
+                                                            maxTemp: maxTemperature,
+                                                            minTemp: minTemperature,
+                                                            datetime: lastUpdatedDateTime)
+    }
+    
+    func updateCurrentForecastInLocalDatabase(condition1: String,
+                                              condition2: String,
+                                              condition3: String,
+                                              condition4: String,
+                                              condition5: String,
+                                              temperatureDay1: Double,
+                                              temperatureDay2: Double,
+                                              temperatureDay3: Double,
+                                              temperatureDay4: Double,
+                                              temperatureDay5: Double) {
+        offlineWeatherRepository?.updateForecastWeather(conditionDay1: condition1,
+                                                                    conditionDay2: condition2,
+                                                                    conditionDay3: condition3,
+                                                                    conditionDay4: condition4,
+                                                                    conditionDay5: condition5,
+                                                                    tempDay1: temperatureDay1,
+                                                                    tempDay2: temperatureDay2,
+                                                                    tempDay3: temperatureDay3,
+                                                                    tempDay4: temperatureDay4,
+                                                                    tempDay5: temperatureDay5)
+    }
+    
+    func setFavLatLong(cityLattitude: Double, cityLongitude: Double) {
+        favLattiude = cityLattitude
+        favLongitude = cityLongitude
+    }
+    
     private func weekDay() {
         dayWeekIndex = Date().dayNumberOfWeek()!
     }
     
     private func setweekDayArr() {
-        var arrWeekDayIndex = dayWeekIndex
+        var arrWeekDayIndex = dayWeekIndex - 1
         var weekDayIndex = 1
         
         while weekDayIndex != 7 {
-            if arrWeekDayIndex + 1 == 7 || arrWeekDayIndex + 1 == 8 {
+            if arrWeekDayIndex + 1 == 7 {
                 arrWeekDayIndex = 0
-            } else {
+            } else if arrWeekDayIndex + 1 != 7 {
                 arrWeekDayIndex += 1
             }
             restructDayWeek.append(dayOfWeek[arrWeekDayIndex])
@@ -133,9 +318,19 @@ class CurrentWeatherViewModel: NSObject {
     }
     
     func setBackgroundimage() -> String {
+        
+        var weatherConditionType: String
         var imagePath = ""
+        
+        if isPhoneOffline {
+            guard let currentWeatherOffline = objectOfflineCurrentWeather else { return Constants.SEASUNNY  }
+            weatherConditionType = currentWeatherOffline.currentCondition?.lowercased() ?? Constants.SEASUNNY
+        } else {
+            guard let currentWeather = objectCurrentWeather else { return Constants.SEASUNNY }
+            weatherConditionType = currentWeather.weather?[0].main.lowercased() ?? Constants.SEASUNNY
+        }
+ 
         guard let pressedimage = isPressed else { return Constants.FORESTSUNNY }
-        guard let weatherConditionType = currentWeatherObject?.weather?[0].main.lowercased() else { return Constants.FORESTSUNNY }
         let weatherCondition = WeatherCondition.init(rawValue: weatherConditionType)
         switch weatherCondition {
         case .sunny:

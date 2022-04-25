@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import UIKit
 import CoreData
 
 class FavouriteLocationRepository {
@@ -15,14 +14,13 @@ class FavouriteLocationRepository {
     typealias CityLocationFetchSavedResult = (Result<[Favourites], LocalDatabaseError>) -> Void
     typealias SaveCityLocationResults = (Result<[Favourites], LocalDatabaseError>) -> Void
     typealias DeleteCityLocationResults = (Result<[Favourites], LocalDatabaseError>) -> Void
-    private let context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
     private var favouriteCities: [Favourites]? = []
 
     // MARK: - Local database Fetch Function
     func fetchSavedCity(completionHandler: @escaping CityLocationFetchSavedResult) {
         DispatchQueue.main.async {
         do {
-            self.favouriteCities = try self.context?.fetch(Favourites.fetchRequest())
+            self.favouriteCities = try Constants.viewContext?.fetch(Favourites.fetchRequest())
             guard let savedCities = self.favouriteCities else { return }
             completionHandler(Result.success(savedCities))
         } catch _ as NSError {
@@ -34,7 +32,7 @@ class FavouriteLocationRepository {
     // MARK: - Local database Save Function
     func saveCity(nameLocation: String, lattitudeCity: Double,longitudeCity: Double, completionHandler: @escaping SaveCityLocationResults) {
 
-        guard let cityContext = self.context else { return }
+        guard let cityContext = Constants.viewContext else { return }
         let favouriteObject = Favourites(context: cityContext)
         favouriteObject.locationName = nameLocation
         favouriteObject.longitude = longitudeCity
@@ -42,7 +40,7 @@ class FavouriteLocationRepository {
 
         DispatchQueue.main.async {
         do {
-            guard let cityContext = self.context,
+            guard let cityContext = Constants.viewContext,
                   let savedCity = self.favouriteCities else { return }
             try cityContext.save()
             completionHandler(Result.success(savedCity))
@@ -53,12 +51,12 @@ class FavouriteLocationRepository {
     }
 
     // MARK: - Local database Delete Functions
-    func deleteSavedPet(petToRemove: Favourites, completionHandler: @escaping DeleteCityLocationResults) {
-        self.context?.delete(petToRemove)
+    func deleteSavedCity(petToRemove: Favourites, completionHandler: @escaping DeleteCityLocationResults) {
+        Constants.viewContext?.delete(petToRemove)
         guard let savedCity = self.favouriteCities else { return }
 
         do {
-            try self.context?.save()
+            try Constants.viewContext?.save()
             completionHandler(Result.success(savedCity))
         } catch _ as NSError {
             completionHandler(Result.failure(.deleteCityError))

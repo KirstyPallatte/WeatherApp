@@ -19,6 +19,12 @@ enum LocalDatabaseError: String, Error {
     case deleteCityError
 }
 
+enum LocalDatabaseOfflineError: String, Error {
+    case retrievedOfflieWeatherSavedError
+    case saveOfflieWeatherError
+    case deleteOfflieWeatherError
+}
+
 enum HTTPMethod {
     case GET
     case POST

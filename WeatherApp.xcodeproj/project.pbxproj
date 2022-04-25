@@ -20,6 +20,8 @@
 		A11E84EB2813ED2200C10914 /* FavouriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11E84EA2813ED2200C10914 /* FavouriteTableViewCell.swift */; };
 		A11E84ED2813EF6200C10914 /* AlertExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11E84EC2813EF6200C10914 /* AlertExtension.swift */; };
 		A11E84EF28145E7B00C10914 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11E84EE28145E7B00C10914 /* DateExtension.swift */; };
+		A14A070B28167F18003D853A /* OfflineWeatherRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14A070A28167F18003D853A /* OfflineWeatherRepository.swift */; };
+		A14A070D28168805003D853A /* InternetConnectionStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14A070C28168805003D853A /* InternetConnectionStatus.swift */; };
 		A16132772815739C0074FA7B /* locationJsonObject.json in Sources */ = {isa = PBXBuildFile; fileRef = A16132762815739C0074FA7B /* locationJsonObject.json */; };
 		A18737E32811222800518E31 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18737E22811222800518E31 /* AppDelegate.swift */; };
 		A18737E52811222800518E31 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18737E42811222800518E31 /* SceneDelegate.swift */; };
@@ -71,6 +73,8 @@
 		A11E84EA2813ED2200C10914 /* FavouriteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteTableViewCell.swift; sourceTree = "<group>"; };
 		A11E84EC2813EF6200C10914 /* AlertExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertExtension.swift; sourceTree = "<group>"; };
 		A11E84EE28145E7B00C10914 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
+		A14A070A28167F18003D853A /* OfflineWeatherRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineWeatherRepository.swift; sourceTree = "<group>"; };
+		A14A070C28168805003D853A /* InternetConnectionStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternetConnectionStatus.swift; sourceTree = "<group>"; };
 		A16132762815739C0074FA7B /* locationJsonObject.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = locationJsonObject.json; sourceTree = "<group>"; };
 		A18737DF2811222800518E31 /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A18737E22811222800518E31 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -228,6 +232,7 @@
 			isa = PBXGroup;
 			children = (
 				A187381928112D6000518E31 /* CurrentWeatherRepository.swift */,
+				A14A070A28167F18003D853A /* OfflineWeatherRepository.swift */,
 				A18737E62811222800518E31 /* CurrentWeatherViewController.swift */,
 				A11C4B4D2812776C006D605C /* FiveDayForecastTableViewCell.swift */,
 				A11C4B4B28126E97006D605C /* FiveDayForecastModel.swift */,
@@ -242,6 +247,7 @@
 			isa = PBXGroup;
 			children = (
 				A187381D28112DE500518E31 /* ServiceErrors.swift */,
+				A14A070C28168805003D853A /* InternetConnectionStatus.swift */,
 			);
 			path = "Service Layer";
 			sourceTree = "<group>";
@@ -413,6 +419,7 @@
 				A11E84EF28145E7B00C10914 /* DateExtension.swift in Sources */,
 				A187382028112EBD00518E31 /* CurrentWeatherModel.swift in Sources */,
 				A187381A28112D6000518E31 /* CurrentWeatherRepository.swift in Sources */,
+				A14A070B28167F18003D853A /* OfflineWeatherRepository.swift in Sources */,
 				A11C4B572812A9AA006D605C /* SearchByCityViewModel.swift in Sources */,
 				A11E84E92813E35C00C10914 /* FavouriteLocationRepository.swift in Sources */,
 				A1873833281192A000518E31 /* UIColorExtension.swift in Sources */,
@@ -431,6 +438,7 @@
 				A18737E32811222800518E31 /* AppDelegate.swift in Sources */,
 				A18738262811318900518E31 /* CurrentWeatherViewModel.swift in Sources */,
 				A11E84E32813D85400C10914 /* FavouriteLocationsViewController.swift in Sources */,
+				A14A070D28168805003D853A /* InternetConnectionStatus.swift in Sources */,
 				A18737E52811222800518E31 /* SceneDelegate.swift in Sources */,
 				A187381E28112DE500518E31 /* ServiceErrors.swift in Sources */,
 				A11C4B522812A8C3006D605C /* CityRepository.swift in Sources */,
