@@ -24,7 +24,6 @@ class FavouriteLocationViewModel {
     private var cityLattitude = 0.00
     private var cityLongitude = 0.00
     private var isDeleteSucess = false
-    
     private var singleCityName: String?
     private var singleCityLattitude: Double?
     private var singleCityLongitude: Double?

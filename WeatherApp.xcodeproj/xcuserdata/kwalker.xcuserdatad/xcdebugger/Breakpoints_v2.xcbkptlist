@@ -16,8 +16,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "39"
             endingLineNumber = "39"
-            landmarkName = "CurrentWeatherViewController"
-            landmarkType = "3">
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1328,7 +1328,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "31"
             endingLineNumber = "31"
-            landmarkName = "testAllPetDetailsCount_ReturnsCorrectValue()"
+            landmarkName = "testAllCityDetailsCount_ReturnsCorrectValue()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1392,7 +1392,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "33"
             endingLineNumber = "33"
-            landmarkName = "testAllPetDetailsCount_ReturnsCorrectValue()"
+            landmarkName = "testAllCityDetailsCount_ReturnsCorrectValue()"
             landmarkType = "7">
             <Locations>
                <Location

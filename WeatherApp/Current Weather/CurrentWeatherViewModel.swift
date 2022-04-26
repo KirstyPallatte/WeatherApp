@@ -73,7 +73,7 @@ class CurrentWeatherViewModel: NSObject {
     
     var arrayWeatherForecastTemperatures: [Double] {
         var temperatureArr: [Double] = []
-        guard let temp1 = objectOfflineForecastWeather?.temperatureDay1 else { return temperatureArr }
+        guard let temp1 =  objectOfflineForecastWeather?.temperatureDay1 else { return temperatureArr }
         guard let temp2 =  objectOfflineForecastWeather?.temperatureDay2 else { return temperatureArr }
         guard let temp3 =  objectOfflineForecastWeather?.temperatureDay3 else { return temperatureArr }
         guard let temp4 =  objectOfflineForecastWeather?.temperatureDay4 else { return temperatureArr }
@@ -84,7 +84,7 @@ class CurrentWeatherViewModel: NSObject {
     
     var arrayWeatherForecastConditions: [String] {
         var conditonArr: [String] = []
-        guard let condition1 = objectOfflineForecastWeather?.condition1 else { return conditonArr }
+        guard let condition1 =  objectOfflineForecastWeather?.condition1 else { return conditonArr }
         guard let condition2 =  objectOfflineForecastWeather?.condition2 else { return conditonArr }
         guard let condition3 =  objectOfflineForecastWeather?.condition3 else { return conditonArr }
         guard let condition4 =  objectOfflineForecastWeather?.condition4 else { return conditonArr }
@@ -294,7 +294,7 @@ class CurrentWeatherViewModel: NSObject {
         dayWeekIndex = Date().dayNumberOfWeek()!
     }
     
-    private func setweekDayArr() {
+     func setweekDayArr() {
         var arrWeekDayIndex = dayWeekIndex - 1
         var weekDayIndex = 1
         
