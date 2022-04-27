@@ -73,7 +73,7 @@ class CurrentWeatherViewModel: NSObject {
     
     var arrayWeatherForecastTemperatures: [Double] {
         var temperatureArr: [Double] = []
-        guard let temp1 = objectOfflineForecastWeather?.temperatureDay1 else { return temperatureArr }
+        guard let temp1 =  objectOfflineForecastWeather?.temperatureDay1 else { return temperatureArr }
         guard let temp2 =  objectOfflineForecastWeather?.temperatureDay2 else { return temperatureArr }
         guard let temp3 =  objectOfflineForecastWeather?.temperatureDay3 else { return temperatureArr }
         guard let temp4 =  objectOfflineForecastWeather?.temperatureDay4 else { return temperatureArr }
@@ -84,7 +84,7 @@ class CurrentWeatherViewModel: NSObject {
     
     var arrayWeatherForecastConditions: [String] {
         var conditonArr: [String] = []
-        guard let condition1 = objectOfflineForecastWeather?.condition1 else { return conditonArr }
+        guard let condition1 =  objectOfflineForecastWeather?.condition1 else { return conditonArr }
         guard let condition2 =  objectOfflineForecastWeather?.condition2 else { return conditonArr }
         guard let condition3 =  objectOfflineForecastWeather?.condition3 else { return conditonArr }
         guard let condition4 =  objectOfflineForecastWeather?.condition4 else { return conditonArr }
@@ -128,7 +128,6 @@ class CurrentWeatherViewModel: NSObject {
             currentWeatherRepository?.fetchSearchResults(latitude: currentLocationLattiude ?? -28.4793,
                                                          longitude: currentLoationLongitude ?? 24.6727,
                                                          completion: { [weak self] result in
-                DispatchQueue.main.async {
                     switch result {
                     case .success(let weatherData):
                         self?.currentWeatherObject = weatherData
@@ -137,7 +136,6 @@ class CurrentWeatherViewModel: NSObject {
                     case .failure(let error):
                         self?.delegate?.showError(error: error.rawValue, message: "Could not retrieve the current weather.")
                     }
-                }
             })
         }
     
@@ -145,7 +143,6 @@ class CurrentWeatherViewModel: NSObject {
         if let latitude = locationManager.location?.coordinate.latitude,
            let longitude = locationManager.location?.coordinate.longitude {
             currentWeatherRepository?.fetchForecastSearchResults(latitude: latitude, longitude: longitude, completion: { [weak self] result in
-                DispatchQueue.main.async {
                     switch result {
                     case .success(let forecastData):
                         self?.forcastObject = forecastData
@@ -154,7 +151,6 @@ class CurrentWeatherViewModel: NSObject {
                     case .failure(let error):
                         self?.delegate?.showError(error: error.rawValue, message: "Could not retrieve the forecast weather.")
                     }
-                }
             })
         }
     }
@@ -294,7 +290,7 @@ class CurrentWeatherViewModel: NSObject {
         dayWeekIndex = Date().dayNumberOfWeek()!
     }
     
-    private func setweekDayArr() {
+     func setweekDayArr() {
         var arrWeekDayIndex = dayWeekIndex - 1
         var weekDayIndex = 1
         
