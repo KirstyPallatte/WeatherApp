@@ -7,7 +7,15 @@
 
 import XCTest
 import CoreLocation
+import CoreLocation
 @testable import WeatherApp
+
+struct LocalWeatherDatabase {
+  var cityName: String
+  var currentCondition: Double
+  var minTemp: Double
+  var maxTemp: Double
+}
 
 class WeatherTest: XCTestCase {
 
@@ -28,8 +36,6 @@ class WeatherTest: XCTestCase {
     // MARK: - Current Weather Test
     func testWeatherDetailsCount_ReturnsIncorrectValue() {
         mockWeatherRepository.shouldPass = false
-        weatherViewModel.fetchCurrentWeatherResults { _ in
-        }
         XCTAssertNotEqual(self.weatherViewModel.objectCurrentWeather?.weather?.count, 1)
     }
     
@@ -37,6 +43,20 @@ class WeatherTest: XCTestCase {
         mockWeatherRepository.shouldPass = true
         weatherViewModel.fetchCurrentWeatherResults { _ in
             XCTAssertEqual(self.weatherViewModel.objectCurrentWeather?.weather?.count, 1)
+        }
+    }
+    
+    func testWeatherWithIncorrectCoordinates_ReturnsIncorrectValue() {
+        mockWeatherRepository.shouldPass = false
+        mockWeatherRepository.fetchSearchResults(latitude: -29.4793, longitude:  25.727) { _ in
+            XCTAssertNotEqual(self.weatherViewModel.objectCurrentWeather?.weather?[0].main, "rainy")
+        }
+    }
+    
+    func testWeatherWithCorrectCoordinates_ReturnsCorrectValue() {
+        mockWeatherRepository.shouldPass = false
+        mockWeatherRepository.fetchSearchResults(latitude: -28.4793, longitude:  24.6727) { _ in
+            XCTAssertNotEqual(self.weatherViewModel.objectCurrentWeather?.weather?[0].main, "sunny")
         }
     }
     
@@ -49,7 +69,6 @@ class WeatherTest: XCTestCase {
         weatherViewModel.fetchCurrentWeatherResults { _ in
             XCTAssertEqual(self.weatherViewModel.objectCurrentWeather?.name, "Cape Town")
         }
-
     }
     
     func testWeatherNameLocation_ReturnFalse() {
@@ -99,7 +118,7 @@ class WeatherTest: XCTestCase {
     func testWeatherTemperatureMax_ReturnsTrue() {
         mockWeatherRepository.shouldPass = true
         weatherViewModel.fetchCurrentWeatherResults { _ in
-        XCTAssertEqual(self.weatherViewModel.objectCurrentWeather?.main?.tempMax, 20)
+        XCTAssertEqual(self.weatherViewModel.objectCurrentWeather?.main?.tempMax, 25)
     }
     }
         
@@ -108,6 +127,65 @@ class WeatherTest: XCTestCase {
          XCTAssertNotEqual(weatherViewModel.objectCurrentWeather?.main?.tempMax, 15)
     }
     
+    func testReloadCalled_ReturnsFalse() {
+        mockWeatherRepository.fetchSearchResults(latitude: 0, longitude:  0) { _ in
+        }
+        XCTAssertFalse(mockWeatherDelegate.reloadViewCalled)
+    }
+    
+    func testReloadCalled__ReturnsTrue() {
+        mockWeatherRepository.shouldPass = true
+        weatherViewModel.fetchCurrentWeatherResults { _ in
+        }
+        XCTAssertTrue(self.mockWeatherDelegate.reloadViewCalled)
+    }
+    
+    func testReloaddidFailWithError_ReturnsFalse() {
+        let expectation = self.expectation(description: "Fetching")
+        mockWeatherRepository.shouldPass = true
+        mockWeatherRepository.fetchSearchResults(latitude: -29.4793, longitude:  25.727) { _ in
+            expectation.fulfill()
+        }
+        waitForExpectations(timeout: 5, handler: nil)
+        XCTAssertFalse(mockWeatherDelegate.didFailWeatherCalled)
+    }
+    
+    func testWetaherObject_ReturnsNil() {
+        let expectation = self.expectation(description: "Fetching")
+        mockWeatherRepository.shouldPass = true
+        mockWeatherRepository.fetchSearchResults(latitude: -28.4793, longitude:  24.6727) { _ in
+            expectation.fulfill()
+        }
+        waitForExpectations(timeout: 5, handler: nil)
+        XCTAssertNil(weatherViewModel.objectCurrentWeather)
+    }
+    
+    func testBackgroundImage_ReturnsEqual() {
+        let expectation = self.expectation(description: "Fetching")
+        mockWeatherRepository.shouldPass = true
+        mockWeatherRepository.fetchSearchResults(latitude: -28.4793, longitude:  24.6727) { _ in
+            expectation.fulfill()
+        }
+        waitForExpectations(timeout: 5, handler: nil)
+        weatherViewModel.imagePressed(pressed: true)
+        XCTAssertEqual(weatherViewModel.setBackgroundimage(), Constants.SEASUNNY)
+    }
+    
+    func testBackgroundImage_ReturnNotEqual() {
+        let expectation = self.expectation(description: "Fetching")
+        mockWeatherRepository.shouldPass = true
+        mockWeatherRepository.fetchSearchResults(latitude: -28.4793, longitude:  24.6727) { _ in
+            expectation.fulfill()
+        }
+        waitForExpectations(timeout: 5, handler: nil)
+        weatherViewModel.imagePressed(pressed: false)
+        XCTAssertNotEqual(weatherViewModel.setBackgroundimage(), Constants.FORESTSUNNY)
+    }
+    
+    func testPhoneOffline_ReturnsFalse() {
+        XCTAssertFalse(weatherViewModel.isPhoneOffline)
+    }
+
     // MARK: - Forecast Weather Test
     
     func testWeatherForecastDetailsCount_ReturnsIncorrectValue() {
@@ -124,53 +202,94 @@ class WeatherTest: XCTestCase {
         }
     }
     
+    func testForecastWithIncorrectCoordinates_ReturnsIncorrectValue() {
+        mockWeatherRepository.shouldPass = false
+        mockWeatherRepository.fetchForecastSearchResults(latitude: -29.4793, longitude:  25.727) { _ in
+            XCTAssertNotEqual(self.weatherViewModel.objectForecastWeather?.list[0].weather[0].main.lowercased(), "rainy")
+        }
+    }
+    
+    func testWeatherWiCoordinates_ReturnsIncorrectValue() {
+        mockWeatherRepository.shouldPass = false
+        mockWeatherRepository.fetchForecastSearchResults(latitude: -29.4793, longitude:  25.727) { _ in
+            XCTAssertNotEqual(self.weatherViewModel.objectForecastWeather?.list[0].weather[0].main, "sunny")
+        }
+    }
+
     func testWeatherForecastCondition_ReturnsTrue() {
         mockWeatherRepository.shouldPass = true
-        weatherViewModel.fetchCurrentWeatherResults { _ in
-            XCTAssertEqual(self.weatherViewModel.objectForecastWeather?.list[0].weather[0].main.lowercased(),"sunny")
+        mockWeatherRepository.fetchForecastSearchResults(latitude: -28.4793, longitude:  24.6727) { _ in
+            XCTAssertNotEqual(self.weatherViewModel.objectForecastWeather?.list[0].weather[0].main.lowercased(), "sunny")
         }
-
     }
     
     func testWeatherCondition_ReturnFalse() {
         mockWeatherRepository.shouldPass = false
-        XCTAssertNotEqual(weatherViewModel.objectForecastWeather?.list[0].weather[0].main.lowercased(),"rainy")
+        XCTAssertNotEqual(self.weatherViewModel.objectForecastWeather?.list[0].weather[0].main.lowercased(), "rainy")
     }
     
     func testWeatherTemperature_ReturnsTrue() {
         mockWeatherRepository.shouldPass = true
-        weatherViewModel.fetchCurrentWeatherResults { _ in
-            XCTAssertEqual(self.weatherViewModel.objectForecastWeather?.list[0].main.temp,15)
+        mockWeatherRepository.fetchForecastSearchResults(latitude: -28.4793, longitude:  24.6727) { _ in
+            XCTAssertNotEqual(self.weatherViewModel.objectForecastWeather?.list[0].main.temp, 15)
         }
-
     }
     
-    func testWeatherTTemperature_ReturnFalse() {
+    func testWeatherTemperature_ReturnFalse() {
         mockWeatherRepository.shouldPass = false
         XCTAssertNotEqual(weatherViewModel.objectForecastWeather?.list[0].main.temp,158)
+    }
+    
+    func testWeeekday_ReturnsNotNil() {
+        weatherViewModel.setweekDayArr()
+        XCTAssertNotNil(weatherViewModel.dayOfWeeekArray(index: 0))
+    }
+    
+    func testIsPressed_ReturnsFalse() {
+        XCTAssertEqual(weatherViewModel.isPressed, false)
+    }
+    
+    // MARK: - Location
+    
+    func testCurrentLocation_ReturnsNil() {
+        
+        let locationManager = CLLocationManager()
+        locationManager.requestWhenInUseAuthorization()
+        XCTAssertFalse(mockWeatherDelegate.didUpdateWeaherCalled)
+        locationManager.startUpdatingLocation()
+        locationManager.requestWhenInUseAuthorization()
+        let currentLocationLattiude = locationManager.location?.coordinate.latitude
+        let currentLoationLongitude = locationManager.location?.coordinate.longitude
+        XCTAssertNil(currentLocationLattiude)
+        XCTAssertNil(currentLoationLongitude)
     }
 }
 
 class MockWeatherDelegate: CurrentWeatherViewModelDelegate {
+    
+    var reloadViewCalled = false
+    var errorCalled = false
+    var didUpdateWeaherCalled = false
+    var didFailWeatherCalled = false
+    
     func reloadView() {
-        
+        reloadViewCalled = true
     }
     
     func showError(error: String, message: String) {
-        
+        errorCalled = true
     }
     
     func didUpdateWeather(weather: CurrentWeather) {
-        
+        didUpdateWeaherCalled = true
     }
     
     func didFailWithError(error: NSError?) {
-        
+        didFailWeatherCalled = true
     }
 }
 
 class MockWeatherRepository: SearchCurrentWeatherRepositoryType {
-    
     var shouldPass = false
     func fetchSearchResults(latitude: CLLocationDegrees, longitude: CLLocationDegrees, completion: @escaping (CurrentWeatherResult)) {
         if shouldPass {
@@ -193,7 +312,7 @@ class MockWeatherRepository: SearchCurrentWeatherRepositoryType {
     private var setMockData: CurrentWeather {
         var weathherData: CurrentWeather
         
-        weathherData = CurrentWeather(coord: Coord(lon: 22.45, lat: 22.67),
+        weathherData = CurrentWeather(coord: Coord(lon: 24.6727, lat: -28.4793),
                                      weather: [Weather(id: 1,
                                                        main: "sunny",
                                                        description: "sunny with clouds", icon: "sunny")],
@@ -219,5 +338,18 @@ class MockWeatherRepository: SearchCurrentWeatherRepositoryType {
 }
 
 class MockOfflineRepository: WeatherOfflineRepository {
+    var shouldPass = false
+    override func fetchSavedOfflineWeather(completionHandler: @escaping WeatherOfflineFetchSavedResult) {
+        if shouldPass {
+            _ = setLocalDatabaseWeather
+        } else {
+            completionHandler(.failure(.retrievedOfflieWeatherSavedError))
+        }
+    }
     
+    private var setLocalDatabaseWeather: LocalWeatherDatabase {
+        var localDatabse: LocalWeatherDatabase
+        localDatabse = LocalWeatherDatabase(cityName: "Johburg", currentCondition: 30, minTemp: 20, maxTemp: 32)
+        return localDatabse
+    }
 }

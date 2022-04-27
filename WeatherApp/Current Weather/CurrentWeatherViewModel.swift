@@ -128,7 +128,6 @@ class CurrentWeatherViewModel: NSObject {
             currentWeatherRepository?.fetchSearchResults(latitude: currentLocationLattiude ?? -28.4793,
                                                          longitude: currentLoationLongitude ?? 24.6727,
                                                          completion: { [weak self] result in
-                DispatchQueue.main.async {
                     switch result {
                     case .success(let weatherData):
                         self?.currentWeatherObject = weatherData
@@ -137,7 +136,6 @@ class CurrentWeatherViewModel: NSObject {
                     case .failure(let error):
                         self?.delegate?.showError(error: error.rawValue, message: "Could not retrieve the current weather.")
                     }
-                }
             })
         }
     
@@ -145,7 +143,6 @@ class CurrentWeatherViewModel: NSObject {
         if let latitude = locationManager.location?.coordinate.latitude,
            let longitude = locationManager.location?.coordinate.longitude {
             currentWeatherRepository?.fetchForecastSearchResults(latitude: latitude, longitude: longitude, completion: { [weak self] result in
-                DispatchQueue.main.async {
                     switch result {
                     case .success(let forecastData):
                         self?.forcastObject = forecastData
@@ -154,7 +151,6 @@ class CurrentWeatherViewModel: NSObject {
                     case .failure(let error):
                         self?.delegate?.showError(error: error.rawValue, message: "Could not retrieve the forecast weather.")
                     }
-                }
             })
         }
     }
