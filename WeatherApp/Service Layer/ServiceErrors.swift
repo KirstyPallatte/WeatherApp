@@ -17,6 +17,8 @@ enum LocalDatabaseError: String, Error {
     case retrievedCitySavedError
     case saveCityError
     case deleteCityError
+    case serverError
+    case internalApiError
 }
 
 enum LocalDatabaseOfflineError: String, Error {

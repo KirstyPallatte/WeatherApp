@@ -73,7 +73,13 @@ class FavouriteLocationViewModel {
     }
 
     func savedCity(at index: Int) -> Favourites? {
-        favouriteCities?[index]
+        return favouriteCities?[index]
+    }
+    
+    func favouriteCitySaved() -> [Favourites?] {
+        let favourite: [Favourites] = []
+        guard favouriteCities != nil else { return favourite }
+        return favourite
     }
 
     func cityLocationNameSaved(city: Favourites) -> String {
@@ -121,8 +127,8 @@ class FavouriteLocationViewModel {
     // MARK: - Local Database function delete
     func deleteCityLocaldatabase(cityToRemove: Favourites) {
         guard let cityDeleteName = cityToRemove.locationName else { return }
-        cityLocalDatabaseRepository?.deleteSavedCity(petToRemove: cityToRemove) { [weak self] savedPets in
-            switch savedPets {
+        cityLocalDatabaseRepository?.deleteSavedCity(locationToRemove: cityToRemove) { [weak self] savedCity in
+            switch savedCity {
             case .success:
                 self?.delegate?.refreshCity()
             case .failure:

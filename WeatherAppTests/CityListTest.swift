@@ -11,14 +11,14 @@ import XCTest
 class CityListTest: XCTestCase {
 
     private var cityViewModel: SearchCityViewModel!
-    private var mockCityDelegate: MockCityListDelegate!
+    private var mockCityDelegat: MockCityListDelegate!
     private var mockCityRepository: MockCityListDataRepository!
 
       override func setUp() {
-          mockCityDelegate = MockCityListDelegate()
+          mockCityDelegat = MockCityListDelegate()
           mockCityRepository = MockCityListDataRepository()
           cityViewModel = SearchCityViewModel(repository: mockCityRepository,
-                                              delegate: mockCityDelegate)
+                                              delegate: mockCityDelegat)
       }
     
     // MARK: - Tableview data
@@ -44,28 +44,35 @@ class CityListTest: XCTestCase {
         XCTAssertNotNil(cityViewModel.arrCity)
     }
     
-    func testSearchPetBySpecificCityName_ReturnsNotEqual() {
+    func testSearchBySpecificCityName_ReturnsNotEqual() {
         mockCityRepository.shouldPass = true
         cityViewModel.fetchCityResults()
         cityViewModel.search(searchText: "Cape Town")
         XCTAssertEqual(cityViewModel.filteredCity?.count,0)
     }
     
-    func testSearchPetBySpecificCityName_ReturnsEqual() {
+    func testSearchBySpecificCityName_ReturnsEqual() {
         mockCityRepository.shouldPass = true
         cityViewModel.fetchCityResults()
         cityViewModel.search(searchText: "Johburg")
         XCTAssertEqual(cityViewModel.filteredCity?.count,1)
     }
     
-    func testSearchPetBySpecificCityName_ReturnsIncorrectValue() {
+    func testSearchFilterSpecificCityName_ReturnsEqual() {
+        mockCityRepository.shouldPass = true
+        cityViewModel.fetchCityResults()
+        cityViewModel.search(searchText: "Johburg")
+        XCTAssertEqual(cityViewModel.filteredCityCount,1)
+    }
+    
+    func testSearchBySpecificCityName_ReturnsIncorrectValue() {
         mockCityRepository.shouldPass = true
         cityViewModel.fetchCityResults()
         cityViewModel.search(searchText: "Cape Town")
         XCTAssertEqual(cityViewModel.filteredCityCount,0)
     }
     
-    func testSearchPetBySpecificCityName_ReturnsCorrectValue() {
+    func testSearchBySpecificCityName_ReturnsCorrectValue() {
         mockCityRepository.shouldPass = true
         cityViewModel.fetchCityResults()
         cityViewModel.search(searchText: "Johburg")
@@ -74,15 +81,15 @@ class CityListTest: XCTestCase {
     
     func testFetchSearch_ResultsFailure() {
         cityViewModel.fetchCityResults()
-        XCTAssertFalse(mockCityDelegate.reloadViewCalled)
-        XCTAssert(mockCityDelegate.errorCalled)
+        XCTAssertFalse(mockCityDelegat.reloadViewCalled)
+        XCTAssert(mockCityDelegat.errorCalled)
     }
 
     func testFetchSearch_ResultsSuccess() {
         mockCityRepository.shouldPass = true
         cityViewModel.fetchCityResults()
-        XCTAssert(mockCityDelegate.reloadViewCalled)
-        XCTAssertFalse(mockCityDelegate.errorCalled)
+        XCTAssert(mockCityDelegat.reloadViewCalled)
+        XCTAssertFalse(mockCityDelegat.errorCalled)
     }
 
     func testCityCount_ResultIncorrectCount() {

@@ -13,7 +13,7 @@ class FavouriteLocationRepository {
     // MARK: - Vars/Lets
     typealias CityLocationFetchSavedResult = (Result<[Favourites], LocalDatabaseError>) -> Void
     typealias SaveCityLocationResults = (Result<[Favourites], LocalDatabaseError>) -> Void
-    typealias DeleteCityLocationResults = (Result<[Favourites], LocalDatabaseError>) -> Void
+    typealias DeleteCityLocationResults = (Result<Favourites, LocalDatabaseError>) -> Void
     private var favouriteCities: [Favourites]? = []
 
     // MARK: - Local database Fetch Function
@@ -51,13 +51,12 @@ class FavouriteLocationRepository {
     }
 
     // MARK: - Local database Delete Functions
-    func deleteSavedCity(petToRemove: Favourites, completionHandler: @escaping DeleteCityLocationResults) {
-        Constants.viewContext?.delete(petToRemove)
-        guard let savedCity = self.favouriteCities else { return }
+    func deleteSavedCity(locationToRemove: Favourites, completionHandler: @escaping DeleteCityLocationResults) {
+        Constants.viewContext?.delete(locationToRemove)
 
         do {
             try Constants.viewContext?.save()
-            completionHandler(Result.success(savedCity))
+            completionHandler(Result.success(locationToRemove))
         } catch _ as NSError {
             completionHandler(Result.failure(.deleteCityError))
         }

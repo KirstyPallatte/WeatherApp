@@ -197,6 +197,7 @@ class CurrentWeatherViewModel: NSObject {
                                            currentTemperature: Double,
                                            maxTemperature: Double,
                                            minTemperature: Double) {
+
         offlineWeatherRepository?.saveOfflineCurrentWeather(cityName: nameCity,
                                                             currentCondition: currentCondition,
                                                             currentTemp: currentTemperature,
@@ -252,11 +253,11 @@ class CurrentWeatherViewModel: NSObject {
                                              maxTemperature: Double,
                                              minTemperature: Double) {
         offlineWeatherRepository?.updateCurrentWeather(cityName: nameCity,
-                                                            currentCondition: currentCondition,
-                                                            currentTemp: currentTemperature,
-                                                            maxTemp: maxTemperature,
-                                                            minTemp: minTemperature,
-                                                            datetime: lastUpdatedDateTime)
+                                                       currentCondition: currentCondition,
+                                                       currentTemp: currentTemperature,
+                                                       maxTemp: maxTemperature,
+                                                       minTemp: minTemperature,
+                                                       datetime: lastUpdatedDateTime)
     }
     
     func updateCurrentForecastInLocalDatabase(condition1: String,
