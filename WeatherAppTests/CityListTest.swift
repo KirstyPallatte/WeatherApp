@@ -22,12 +22,12 @@ class CityListTest: XCTestCase {
       }
     
     // MARK: - Tableview data
-     func testAllPetDetailsCount_ReturnsIncorrectValue() {
+     func testAllCityDetailsCount_ReturnsIncorrectValue() {
          mockCityRepository.shouldPass = false
          XCTAssertEqual(cityViewModel.cityCount, 0)
      }
     
-    func testAllPetDetailsCount_ReturnsCorrectValue() {
+    func testAllCityDetailsCount_ReturnsCorrectValue() {
         mockCityRepository.shouldPass = true
         cityViewModel.fetchCityResults()
         XCTAssertEqual(cityViewModel.cityCount, 1)
