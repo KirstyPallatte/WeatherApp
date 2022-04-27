@@ -5,6 +5,7 @@
 * Project status: Working prototype
 
 ## :bar_chart: Code Quality
+[![Build Status](https://app.bitrise.io/app/f6672c5f3fb76e55/status.svg?token=4u0lsnLdln0bSg8lx-8BLw&branch=master)](https://app.bitrise.io/app/f6672c5f3fb76e55)
 
 ## :mag_right: Git Structure
 ### Branching Stratergy
