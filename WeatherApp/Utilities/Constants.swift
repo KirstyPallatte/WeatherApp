@@ -12,7 +12,7 @@ struct Constants {
     static var APIKey = "8184f7495ce900d66677e0558be90083"
     static var weatherCurrentURl = "https://api.openweathermap.org/data/2.5/weather?"
     static var weatherForecast5URl = "https://api.openweathermap.org/data/2.5/forecast?"
-    static var cityURL = "https://raw.githubusercontent.com/kirsty14/WeatherApp/feature/addCities/WeatherApp/Resources/locationJsonObject.json"
+    static var cityURL = "https://raw.githubusercontent.com/kirsty14/WeatherApp/master/WeatherApp/Resources/locationJsonObject.json"
     static let viewContext = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
     static let FORESTSUNNY = "forest_sunny"
     static let FORESTCLOUDY = "forest_cloudy"
