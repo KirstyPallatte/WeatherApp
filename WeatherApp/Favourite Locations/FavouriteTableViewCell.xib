@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FavouriteTableViewCell" rowHeight="264" id="RSV-iz-eCA" customClass="FavouriteTableViewCell" customModule="WeatherApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="374" height="264"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="RSV-iz-eCA" id="yPQ-Fl-Vbu">
+                <rect key="frame" x="0.0" y="0.0" width="374" height="264"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clear" translatesAutoresizingMaskIntoConstraints="NO" id="Yrc-Zh-GEa">
+                        <rect key="frame" x="16" y="16" width="382" height="253"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="253" id="bSM-Pm-KAy"/>
+                            <constraint firstAttribute="width" constant="382" id="fcr-5W-nK3"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W9I-1y-Aau">
+                        <rect key="frame" x="16" y="109" width="179" height="36"/>
+                        <color key="backgroundColor" red="0.91187265240000004" green="0.91187265240000004" blue="0.91187265240000004" alpha="0.75799358439999998" colorSpace="custom" customColorSpace="displayP3"/>
+                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="30"/>
+                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="highlightedColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jv5-jD-zvw">
+                        <rect key="frame" x="12" y="16" width="382" height="36"/>
+                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="30"/>
+                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="highlightedColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MfS-KF-ydl">
+                        <rect key="frame" x="16" y="65" width="179" height="36"/>
+                        <color key="backgroundColor" red="0.91187265240000004" green="0.91187265240000004" blue="0.91187265240000004" alpha="0.75799358439999998" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="179" id="vsT-dc-3Uf"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="30"/>
+                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="highlightedColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </label>
+                </subviews>
+                <color key="tintColor" name="AccentColor"/>
+                <constraints>
+                    <constraint firstItem="Jv5-jD-zvw" firstAttribute="top" secondItem="Yrc-Zh-GEa" secondAttribute="top" id="2Vv-YT-8G6"/>
+                    <constraint firstItem="MfS-KF-ydl" firstAttribute="trailing" secondItem="W9I-1y-Aau" secondAttribute="trailing" id="Bdd-au-Jvm"/>
+                    <constraint firstItem="Jv5-jD-zvw" firstAttribute="bottom" secondItem="yPQ-Fl-Vbu" secondAttribute="bottomMargin" constant="-201" id="ErS-ke-JCL"/>
+                    <constraint firstItem="MfS-KF-ydl" firstAttribute="leading" secondItem="W9I-1y-Aau" secondAttribute="leading" id="PHB-Iy-PZf"/>
+                    <constraint firstItem="Jv5-jD-zvw" firstAttribute="trailing" secondItem="Yrc-Zh-GEa" secondAttribute="trailing" constant="-4" id="Q7r-5b-2wF"/>
+                    <constraint firstItem="MfS-KF-ydl" firstAttribute="leading" secondItem="Jv5-jD-zvw" secondAttribute="leading" constant="4" id="TI6-5x-RXh"/>
+                    <constraint firstItem="W9I-1y-Aau" firstAttribute="top" secondItem="MfS-KF-ydl" secondAttribute="bottom" constant="8" id="arN-C8-fUf"/>
+                    <constraint firstAttribute="bottom" secondItem="Yrc-Zh-GEa" secondAttribute="bottom" constant="8" id="lQR-iM-dCo"/>
+                    <constraint firstItem="Yrc-Zh-GEa" firstAttribute="top" secondItem="yPQ-Fl-Vbu" secondAttribute="top" constant="16" id="n1V-ob-UjN"/>
+                    <constraint firstItem="MfS-KF-ydl" firstAttribute="top" secondItem="Jv5-jD-zvw" secondAttribute="bottom" constant="13" id="o4g-Gb-dWa"/>
+                    <constraint firstItem="Yrc-Zh-GEa" firstAttribute="leading" secondItem="yPQ-Fl-Vbu" secondAttribute="leading" constant="16" id="r7C-aW-pfE"/>
+                    <constraint firstItem="Jv5-jD-zvw" firstAttribute="leading" secondItem="Yrc-Zh-GEa" secondAttribute="leading" constant="-4" id="twe-d8-7G4"/>
+                    <constraint firstAttribute="trailing" secondItem="Yrc-Zh-GEa" secondAttribute="trailing" constant="16" id="z4i-0W-AEl"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="tintColor" name="AccentColor"/>
+            <connections>
+                <outlet property="cityImageView" destination="Yrc-Zh-GEa" id="j3b-k3-0XS"/>
+                <outlet property="cityLattitudeLabel" destination="MfS-KF-ydl" id="4ng-bQ-8hl"/>
+                <outlet property="cityLongitudeLabel" destination="W9I-1y-Aau" id="drj-nS-ZPC"/>
+                <outlet property="cityNameLabel" destination="Jv5-jD-zvw" id="vAp-HJ-Ga0"/>
+            </connections>
+            <point key="canvasLocation" x="864" y="4"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="clear" width="13" height="13"/>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

@@ -16,8 +16,6 @@ class FiveDayForecastTableViewCell: UITableViewCell {
     @IBOutlet weak private var fiveDayLabel: UILabel!
     private var backgroundCellColour: UIColor?
     
-    static let identifier = "ForecastCell"
-    
     // MARK: - Functions
     override func awakeFromNib() {
         super.awakeFromNib()
