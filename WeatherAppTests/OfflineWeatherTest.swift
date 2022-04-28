@@ -58,7 +58,7 @@ class OfflineWeatherTest: XCTestCase {
         let weatherCount = offlineWeatherRepository.totalNumber(in: container.viewContext)
         XCTAssertEqual(weatherCount, expectedCount)
     }
-
+    
     func testWeatherSaved_ReturnsNotNil() {
         offlineWeatherRepository.shouldPass = true
         offlineWeatherRepository.setContainer(viewContainer: container)
@@ -228,7 +228,7 @@ class OfflineWeatherTest: XCTestCase {
                                                             temperatureDay2: 25, temperatureDay3: 18,
                                                             temperatureDay4: 20, temperatureDay5: 20)
         weatherViewModel.fetchOfflineFiveDayForecastWeatherResults()
-
+        
         XCTAssertEqual(conditonArr,weatherViewModel.arrayWeatherForecastConditions)
         XCTAssertEqual(conditonTemp,weatherViewModel.arrayWeatherForecastTemperatures)
     }
@@ -244,7 +244,7 @@ class OfflineWeatherTest: XCTestCase {
                                                             temperatureDay3: 18, temperatureDay4: 20,
                                                             temperatureDay5: 20)
         weatherViewModel.fetchOfflineFiveDayForecastWeatherResults()
-
+        
         XCTAssertNotEqual(conditonArr,weatherViewModel.arrayWeatherForecastConditions)
         XCTAssertNotEqual(conditonTemp,weatherViewModel.arrayWeatherForecastTemperatures)
     }
@@ -280,7 +280,7 @@ class MockWeatherForecastRepository: SearchCurrentWeatherRepositoryType {
     
     func fetchForecastSearchResults(latitude: CLLocationDegrees, longitude: CLLocationDegrees, completion: @escaping (FiveDayForecastResult)) {
     }
-
+    
     private var setForecastMockData: ForecastData {
         var forecastData: ForecastData
         forecastData = ForecastData(cod: "24", message: 1, cnt: 1,

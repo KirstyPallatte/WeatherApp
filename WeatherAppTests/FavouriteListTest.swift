@@ -85,11 +85,11 @@ class FavouriteListTest: XCTestCase {
     
     func testSettingCityName_ReturnsEqual() {
         mockFavouriteCityRepository.shouldPass = true
-         guard let cityData = mockFavouriteCityRepository.setFavouriteCity() else { return }
-         let cityName = cityData.cityName
-         let lattitude = cityData.lattitude
-         let longitude = cityData.longitude
-         let image = cityData.image
+        guard let cityData = mockFavouriteCityRepository.setFavouriteCity() else { return }
+        let cityName = cityData.cityName
+        let lattitude = cityData.lattitude
+        let longitude = cityData.longitude
+        let image = cityData.image
         favouriteViewModel.setSingleCityObject(cityName: cityName, lattitude: lattitude, longitude: longitude, image: image)
         XCTAssertEqual(favouriteViewModel.nameSingleCity, "Cape Town")
     }
@@ -168,7 +168,7 @@ class FavouriteListTest: XCTestCase {
     }
     
     func testSuccessDeleted() {
-       favouriteViewModel.set(isCityDeleteSuccess: true)
+        favouriteViewModel.set(isCityDeleteSuccess: true)
         XCTAssertTrue(favouriteViewModel.isCitySucessDeleted)
     }
     
@@ -298,7 +298,7 @@ class FavouriteListTest: XCTestCase {
         favouriteViewModel.fetchCityDataResults()
         guard let city = favouriteViewModel.savedCity(at: 0) else { return }
         favouriteViewModel.deleteCityLocaldatabase(cityToRemove: city)
-        XCTAssertTrue(self.mockFavouriteCitySearchrDelegat.refrshCalled) 
+        XCTAssertTrue(self.mockFavouriteCitySearchrDelegat.refrshCalled)
     }
     
     func testFavoruiteErrorCalled_ReturnsTrue() {
@@ -329,7 +329,7 @@ class MockLocalDatabaseViewModelDelegate: CityLocalDatabaseViewModelDelegate {
     func refreshCity() {
         refrshCalled = true
     }
-
+    
 }
 
 class MockFavouriteCityRepository: FavouriteLocationRepository {
@@ -350,7 +350,7 @@ class MockFavouriteCityRepository: FavouriteLocationRepository {
         let favouriteCities: [Favourites] = savedCities
         
         try? container.viewContext.save()
-    
+        
         if shouldPass {
             completionHandler(.success(favouriteCities))
         } else {
@@ -381,19 +381,19 @@ class MockFavouriteCityRepository: FavouriteLocationRepository {
     
     override func deleteSavedCity(locationToRemove: Favourites,
                                   completionHandler: @escaping DeleteCityLocationResults) {
-            container.viewContext.delete(locationToRemove)
-            do {
-                if shouldDelete {
+        container.viewContext.delete(locationToRemove)
+        do {
+            if shouldDelete {
                 try self.container.viewContext.save()
                 completionHandler(Result.success(locationToRemove))
-                } else {
-                    completionHandler(Result.failure(.deleteCityError))
-                }
-            } catch _ as NSError {
+            } else {
                 completionHandler(Result.failure(.deleteCityError))
             }
+        } catch _ as NSError {
+            completionHandler(Result.failure(.deleteCityError))
         }
-
+    }
+    
     func setFavouriteCity() -> CityObject? {
         var city = CityObject(cityName: "", lattitude: 0.00, longitude:0.00, image: "")
         if shouldPass {

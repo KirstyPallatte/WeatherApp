@@ -15,7 +15,7 @@ struct CityData: Codable {
     let coord: Coordinate?
 }
 
-// MARK: - Coord
+// MARK: - Coordinate
 struct Coordinate: Codable {
     let lon, lat: Double?
 }

@@ -28,7 +28,7 @@ class FiveDayForecastTableViewCell: UITableViewCell {
                       colour: UIColor,
                       imageIcon: UIImage) {
         fiveDayTemperatureLabel.text = temperature.description + "°"
-        fiveDayLabel.text = day.description
+        fiveDayLabel.text = day
         fiveDayIconImage.image = imageIcon
         forecastView.backgroundColor = colour
     }
