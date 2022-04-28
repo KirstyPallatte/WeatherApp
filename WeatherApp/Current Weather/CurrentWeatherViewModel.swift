@@ -292,7 +292,7 @@ class CurrentWeatherViewModel: NSObject {
     }
     
      func setweekDayArr() {
-        var arrWeekDayIndex = 6 - 2
+        var arrWeekDayIndex = dayWeekIndex - 2
         var weekDayIndex = 1
         
         while weekDayIndex != 7 {
