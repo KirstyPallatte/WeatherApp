@@ -1502,8 +1502,8 @@
             filePath = "WeatherAppTests/WeatherTest.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "159"
-            endingLineNumber = "159"
+            startingLineNumber = "164"
+            endingLineNumber = "164"
             landmarkName = "testReloadCalled_ReturnsFalse()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1518,8 +1518,8 @@
             filePath = "WeatherAppTests/WeatherTest.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "319"
-            endingLineNumber = "319"
+            startingLineNumber = "324"
+            endingLineNumber = "324"
             landmarkName = "fetchSearchResults(latitude:longitude:completion:)"
             landmarkType = "7">
             <Locations>
@@ -1689,8 +1689,8 @@
             filePath = "WeatherAppTests/WeatherTest.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "173"
-            endingLineNumber = "173"
+            startingLineNumber = "178"
+            endingLineNumber = "178"
             landmarkName = "testReloaddidFailWithError_ReturnsFalse()"
             landmarkType = "7">
             <Locations>
@@ -1737,8 +1737,8 @@
             filePath = "WeatherAppTests/WeatherTest.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "158"
-            endingLineNumber = "158"
+            startingLineNumber = "163"
+            endingLineNumber = "163"
             landmarkName = "testReloadCalled_ReturnsFalse()"
             landmarkType = "7">
          </BreakpointContent>
@@ -2569,6 +2569,22 @@
             startingLineNumber = "245"
             endingLineNumber = "245"
             landmarkName = "setWeatherUI(currentTemp:minTemp:maxTemp:nameCity:imageCondition:currentCondition:dateLastUpdated:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "286B470A-CD98-432A-B50C-4E87CDC9B003"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WeatherApp/Current Weather/View Controller/CurrentWeatherViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "372"
+            endingLineNumber = "372"
+            landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
