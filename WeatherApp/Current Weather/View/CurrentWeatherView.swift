@@ -41,7 +41,7 @@ import UIKit
                  minTemp: String,
                  maxTemp: String,
                  nameCity: String,
-                 imageCondition:  String,
+                 imageCondition: String,
                  currentCondition: String) {
         
         weatherView.bringSubviewToFront(currentTempValueLabel)

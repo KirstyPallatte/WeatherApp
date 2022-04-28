@@ -46,17 +46,17 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="f1H-kf-AQY" userLabel="Current Weather">
-                    <rect key="frame" x="-3" y="0.0" width="429" height="380"/>
+                    <rect key="frame" x="-3" y="0.0" width="429" height="306"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="weatherLoading" translatesAutoresizingMaskIntoConstraints="NO" id="H1r-6f-dDB">
-                            <rect key="frame" x="0.0" y="0.0" width="429" height="324"/>
+                            <rect key="frame" x="0.0" y="0.0" width="429" height="250"/>
                             <color key="backgroundColor" name="sunnyColour"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="324" id="zlK-JM-1qg"/>
+                                <constraint firstAttribute="height" constant="250" id="zlK-JM-1qg"/>
                             </constraints>
                         </imageView>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="110" translatesAutoresizingMaskIntoConstraints="NO" id="ncj-Tq-NkD" userLabel="Current Background VIew">
-                            <rect key="frame" x="0.0" y="324" width="429" height="56"/>
+                            <rect key="frame" x="0.0" y="250" width="429" height="56"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="YkU-1V-Iqw" userLabel="Min Temeperature">
                                     <rect key="frame" x="0.0" y="0.0" width="35.5" height="56"/>

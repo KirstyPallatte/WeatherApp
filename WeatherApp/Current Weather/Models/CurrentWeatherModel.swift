@@ -61,7 +61,7 @@ struct Main: Codable {
     }
 }
 
-// MARK: Weather - Sys
+// MARK: Weather - SunType
 struct SunType: Codable {
     let type: Int?
     let id: Int?

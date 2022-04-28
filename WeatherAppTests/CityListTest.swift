@@ -9,23 +9,23 @@ import XCTest
 @testable import WeatherApp
 
 class CityListTest: XCTestCase {
-
+    
     private var cityViewModel: SearchCityViewModel!
     private var mockCityDelegat: MockCityListDelegate!
     private var mockCityRepository: MockCityListDataRepository!
-
-      override func setUp() {
-          mockCityDelegat = MockCityListDelegate()
-          mockCityRepository = MockCityListDataRepository()
-          cityViewModel = SearchCityViewModel(repository: mockCityRepository,
-                                              delegate: mockCityDelegat)
-      }
+    
+    override func setUp() {
+        mockCityDelegat = MockCityListDelegate()
+        mockCityRepository = MockCityListDataRepository()
+        cityViewModel = SearchCityViewModel(repository: mockCityRepository,
+                                            delegate: mockCityDelegat)
+    }
     
     // MARK: - Tableview data
-     func testAllCityDetailsCount_ReturnsIncorrectValue() {
-         mockCityRepository.shouldPass = false
-         XCTAssertEqual(cityViewModel.cityCount, 0)
-     }
+    func testAllCityDetailsCount_ReturnsIncorrectValue() {
+        mockCityRepository.shouldPass = false
+        XCTAssertEqual(cityViewModel.cityCount, 0)
+    }
     
     func testAllCityDetailsCount_ReturnsCorrectValue() {
         mockCityRepository.shouldPass = true
@@ -37,7 +37,7 @@ class CityListTest: XCTestCase {
         cityViewModel.fetchCityResults()
         XCTAssertNil(cityViewModel.arrCity)
     }
-
+    
     func testCityObject_ReturnsNotNill() {
         mockCityRepository.shouldPass = true
         cityViewModel.fetchCityResults()
@@ -84,14 +84,14 @@ class CityListTest: XCTestCase {
         XCTAssertFalse(mockCityDelegat.reloadViewCalled)
         XCTAssert(mockCityDelegat.errorCalled)
     }
-
+    
     func testFetchSearch_ResultsSuccess() {
         mockCityRepository.shouldPass = true
         cityViewModel.fetchCityResults()
         XCTAssert(mockCityDelegat.reloadViewCalled)
         XCTAssertFalse(mockCityDelegat.errorCalled)
     }
-
+    
     func testCityCount_ResultIncorrectCount() {
         cityViewModel.fetchCityResults()
         XCTAssertEqual(cityViewModel.cityCount, 0)

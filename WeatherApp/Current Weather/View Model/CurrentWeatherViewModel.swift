@@ -23,15 +23,12 @@ class CurrentWeatherViewModel: NSObject {
     private var offlineWeatherRepository: WeatherOfflineRepository?
     private weak var delegate: CurrentWeatherViewModelDelegate?
     private var currentWeatherObject: CurrentWeather?
-    
     private var currentOfflineWeatherObject: OfflineWeather?
     private var forcastOfflineWeatherObject: OfflineFiveDayForecast?
     private var isOffline = true
-
     private var forcastObject: ForecastData?
     private lazy var locationManager = CLLocationManager()
     private lazy var isChangeImagePressed = false
-    private var dayOfWeek = ["Sunday","Monday","Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
     private var dayWeekIndex: Int = 0
     private var restructDayWeek: [String] = []
     private var favLattiude: Double?
@@ -104,11 +101,9 @@ class CurrentWeatherViewModel: NSObject {
          let internetReachability = Reachability()
         
         if internetReachability.isConnectedToNetwork() {
-            print("Connected to the internet")
             isOffline = false
             setUpLocationData()
         } else {
-            print("No internet connection")
             isOffline = true
         }
         
@@ -292,18 +287,7 @@ class CurrentWeatherViewModel: NSObject {
     }
     
      func setweekDayArr() {
-        var arrWeekDayIndex = dayWeekIndex - 2
-        var weekDayIndex = 1
-        
-        while weekDayIndex != 7 {
-            if arrWeekDayIndex + 1 == 7 {
-                arrWeekDayIndex = 0
-            } else if arrWeekDayIndex + 1 != 7 {
-                arrWeekDayIndex += 1
-            }
-            restructDayWeek.append(dayOfWeek[arrWeekDayIndex])
-            weekDayIndex += 1
-        }
+         restructDayWeek = Date().setNewWeekArray
     }
 
     func dayOfWeeekArray(index: Int) -> String {

@@ -9,17 +9,17 @@ import Foundation
 import CoreData
 
 class WeatherOfflineRepository {
-
+    
     // MARK: - Vars/Lets
     typealias WeatherOfflineFetchSavedResult = (Result<OfflineWeather, LocalDatabaseOfflineError>) -> Void
     typealias SaveWeatherOfflineResults = (Result<[OfflineWeather], LocalDatabaseOfflineError>) -> Void
     
     typealias WeatherOfflineForecastFetchSavedResult = (Result<OfflineFiveDayForecast, LocalDatabaseOfflineError>) -> Void
     typealias SaveWeatherOfflineForecastResults = (Result<[OfflineFiveDayForecast], LocalDatabaseOfflineError>) -> Void
-
+    
     private var offlineWeather: [OfflineWeather]? = []
     private var fiveDayForecastWeather: [OfflineFiveDayForecast]? = []
-
+    
     // MARK: - Local database Fetch Function
     func fetchSavedOfflineWeather(completionHandler: @escaping WeatherOfflineFetchSavedResult) {
         do {
@@ -42,7 +42,7 @@ class WeatherOfflineRepository {
             completionHandler(Result.failure(.retrievedOfflieWeatherSavedError))
         }
     }
-
+    
     // MARK: - Local database Save Function
     func saveOfflineCurrentWeather(cityName: String,
                                    currentCondition: String,
@@ -51,7 +51,7 @@ class WeatherOfflineRepository {
                                    minTemp: Double,
                                    dateTime: String,
                                    completionHandler: @escaping SaveWeatherOfflineResults) {
-
+        
         guard let weatherOfflineContext = Constants.viewContext else { return }
         let offlineWeatherObject = OfflineWeather(context: weatherOfflineContext)
         offlineWeatherObject.cityName = cityName
@@ -60,16 +60,16 @@ class WeatherOfflineRepository {
         offlineWeatherObject.minTemp = minTemp
         offlineWeatherObject.maxTemp = maxTemp
         offlineWeatherObject.timeLastUpdated = dateTime
-
+        
         DispatchQueue.main.async {
-        do {
-            guard let offlineWeatherContext = Constants.viewContext,
-                  let savedOfflineWeather = self.offlineWeather else { return }
-            try offlineWeatherContext.save()
-            completionHandler(Result.success(savedOfflineWeather))
-        } catch _ as NSError {
-            completionHandler(Result.failure(.saveOfflieWeatherError))
-        }
+            do {
+                guard let offlineWeatherContext = Constants.viewContext,
+                      let savedOfflineWeather = self.offlineWeather else { return }
+                try offlineWeatherContext.save()
+                completionHandler(Result.success(savedOfflineWeather))
+            } catch _ as NSError {
+                completionHandler(Result.failure(.saveOfflieWeatherError))
+            }
         }
     }
     
@@ -84,7 +84,7 @@ class WeatherOfflineRepository {
                                            tempDay4: Double,
                                            tempDay5: Double,
                                            completionHandler: @escaping SaveWeatherOfflineForecastResults) {
-
+        
         guard let offlineWeatherForecastContext = Constants.viewContext else { return }
         let offlineForecastWeatherObject = OfflineFiveDayForecast(context: offlineWeatherForecastContext)
         offlineForecastWeatherObject.condition1 = conditionDay1
@@ -97,17 +97,17 @@ class WeatherOfflineRepository {
         offlineForecastWeatherObject.temperatureDay3 = tempDay3
         offlineForecastWeatherObject.temperatureDay4 = tempDay4
         offlineForecastWeatherObject.temperatureDay5 = tempDay5
-
+        
         DispatchQueue.main.async {
-        do {
-            guard let offlineWeatherContext = Constants.viewContext else { return }
-            try offlineWeatherContext.save()
-        } catch _ as NSError {
-            print("Error")
-        }
+            do {
+                guard let offlineWeatherContext = Constants.viewContext else { return }
+                try offlineWeatherContext.save()
+            } catch _ as NSError {
+                print("Error")
+            }
         }
     }
-
+    
     // MARK: - Update Local Database
     func updateCurrentWeather(cityName: String,
                               currentCondition: String,
@@ -115,22 +115,22 @@ class WeatherOfflineRepository {
                               maxTemp: Double,
                               minTemp: Double,
                               datetime: String) {
-
-    guard let weatherOfflineContext = Constants.viewContext else { return }
-    let offlineWeatherObject = OfflineWeather(context: weatherOfflineContext)
+        
+        guard let weatherOfflineContext = Constants.viewContext else { return }
+        let offlineWeatherObject = OfflineWeather(context: weatherOfflineContext)
         offlineWeatherObject.setValue(cityName, forKeyPath: "cityName")
         offlineWeatherObject.setValue(currentCondition, forKeyPath: "currentCondition")
         offlineWeatherObject.setValue(currentTemp, forKeyPath: "currentTemp")
         offlineWeatherObject.setValue(maxTemp, forKeyPath: "minTemp")
         offlineWeatherObject.setValue(minTemp, forKeyPath: "maxTemp")
         offlineWeatherObject.setValue(datetime, forKeyPath: "timeLastUpdated")
-    DispatchQueue.main.async {
-    do {
-    try weatherOfflineContext.save()
-    } catch _ as NSError {
-       print("Error")
-    }
-    }
+        DispatchQueue.main.async {
+            do {
+                try weatherOfflineContext.save()
+            } catch _ as NSError {
+                print("Error")
+            }
+        }
     }
     
     func updateForecastWeather(conditionDay1: String,
@@ -143,9 +143,9 @@ class WeatherOfflineRepository {
                                tempDay3: Double,
                                tempDay4: Double,
                                tempDay5: Double) {
-
-    guard let weatherOfflineContext = Constants.viewContext else { return }
-    let offlineWeatherObject = OfflineFiveDayForecast(context: weatherOfflineContext)
+        
+        guard let weatherOfflineContext = Constants.viewContext else { return }
+        let offlineWeatherObject = OfflineFiveDayForecast(context: weatherOfflineContext)
         offlineWeatherObject.setValue(conditionDay1, forKeyPath: "condition1")
         offlineWeatherObject.setValue(conditionDay2, forKeyPath: "condition2")
         offlineWeatherObject.setValue(conditionDay3, forKeyPath: "condition3")
@@ -158,41 +158,41 @@ class WeatherOfflineRepository {
         offlineWeatherObject.setValue(tempDay5, forKeyPath: "temperatureDay5")
         
         do {
-        try weatherOfflineContext.save()
+            try weatherOfflineContext.save()
         } catch _ as NSError {
-           print("Error")
+            print("Error")
         }
     }
     
     // MARK: - Empty Local database check
     
     func checkIfLocalDatabaseForecastWeatherIsEmpty() -> Bool {
-       var isCurrentWeatherDBEmpty = true
-       do {
-           guard let results = try Constants.viewContext?.fetch(OfflineFiveDayForecast.fetchRequest()) else { return  false}
-           if results.isEmpty {
-               isCurrentWeatherDBEmpty = true
-           } else {
-               isCurrentWeatherDBEmpty = false
-           }
-       } catch {
-           isCurrentWeatherDBEmpty = true
-       }
-       return isCurrentWeatherDBEmpty
-   }
+        var isCurrentWeatherDBEmpty = true
+        do {
+            guard let results = try Constants.viewContext?.fetch(OfflineFiveDayForecast.fetchRequest()) else { return  false}
+            if results.isEmpty {
+                isCurrentWeatherDBEmpty = true
+            } else {
+                isCurrentWeatherDBEmpty = false
+            }
+        } catch {
+            isCurrentWeatherDBEmpty = true
+        }
+        return isCurrentWeatherDBEmpty
+    }
     
     func checkIfLocalDatabaseCurrentWeatherIsEmpty() -> Bool {
-       var isCurrentWeatherDBEmpty = true
-       do {
-           guard let results = try Constants.viewContext?.fetch(OfflineWeather.fetchRequest()) else { return  false}
-           if results.isEmpty {
-               isCurrentWeatherDBEmpty = true
-           } else {
-               isCurrentWeatherDBEmpty = false
-           }
-       } catch {
-           isCurrentWeatherDBEmpty = true
-       }
-       return isCurrentWeatherDBEmpty
-   }
+        var isCurrentWeatherDBEmpty = true
+        do {
+            guard let results = try Constants.viewContext?.fetch(OfflineWeather.fetchRequest()) else { return  false}
+            if results.isEmpty {
+                isCurrentWeatherDBEmpty = true
+            } else {
+                isCurrentWeatherDBEmpty = false
+            }
+        } catch {
+            isCurrentWeatherDBEmpty = true
+        }
+        return isCurrentWeatherDBEmpty
+    }
 }

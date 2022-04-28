@@ -11,7 +11,7 @@ import UIKit
 class FavouriteLocationsViewController: UIViewController {
     
     // MARK: - VIBOutlets
-    @IBOutlet weak var favouriteCityTableview: UITableView!
+    @IBOutlet weak private var favouriteCityTableview: UITableView!
 
     // MARK: - Vars/Lets
     private lazy var cityFavouriteViewModel = FavouriteLocationViewModel(repository: FavouriteLocationRepository(),
@@ -114,7 +114,6 @@ extension FavouriteLocationsViewController: UITableViewDataSource, UITableViewDe
 }
 }
 
-// MARK: - cityLocalDatabaseViewModel functions
 extension FavouriteLocationsViewController: CityLocalDatabaseViewModelDelegate {
     func refreshCity() {
         cityFavouriteViewModel.fetchCityDataResults()
