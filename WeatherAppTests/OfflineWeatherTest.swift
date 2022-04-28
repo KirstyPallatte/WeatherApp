@@ -103,8 +103,7 @@ class OfflineWeatherTest: XCTestCase {
         weatherViewModel.imagePressed(pressed: false)
         XCTAssertTrue((weatherViewModel.isPressed != nil))
     }
-    
-    
+
     func testWeatherIsEmpty_ReturnsFalse() {
         offlineWeatherRepository.shouldPass = true
         offlineWeatherRepository.setContainer(viewContainer: container)

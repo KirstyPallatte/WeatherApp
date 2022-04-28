@@ -110,8 +110,7 @@ class WeatherTest: XCTestCase {
     func testCurrentWeather_ReturnsNil() {
         XCTAssertNil(self.weatherViewModel.objectCurrentWeather)
     }
-    
-    
+
     func testWeatherMain_ReturnsTrue() {
         mockWeatherRepository.shouldPass = true
         weatherViewModel.fetchCurrentWeatherResults { _ in
