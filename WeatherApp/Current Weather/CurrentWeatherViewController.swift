@@ -64,6 +64,7 @@ class CurrentWeatherViewController: UIViewController {
                 
                 if isCurrentWeatherSavedInLocalDatabase && isForecastWeatherSavedInLocalDatabase {
                     self.fetchFiveDayForecastData()
+                    self.saveCurrentWetherInLocalDatabase()
                     self.updateUICurrentWeather()
                 } else {
                     self.updateCurrentWetherInLocalDatabase()
