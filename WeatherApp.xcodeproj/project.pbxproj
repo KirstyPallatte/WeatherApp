@@ -147,10 +147,10 @@
 		A11C4B552812A971006D605C /* Search by City */ = {
 			isa = PBXGroup;
 			children = (
-				A11C4B532812A933006D605C /* CitryModel.swift */,
-				A11C4B582812AC4B006D605C /* SearchCityViewController.swift */,
-				A11C4B512812A8C3006D605C /* CityRepository.swift */,
-				A11C4B562812A9AA006D605C /* SearchByCityViewModel.swift */,
+				A148FFBB281ACBB900E61069 /* Model */,
+				A148FFBC281ACBC500E61069 /* View Controller */,
+				A148FFBD281ACBCD00E61069 /* Repository */,
+				A148FFBE281ACBD400E61069 /* View Model */,
 			);
 			path = "Search by City";
 			sourceTree = "<group>";
@@ -158,11 +158,10 @@
 		A11E84E42813DFD500C10914 /* Favourite Locations */ = {
 			isa = PBXGroup;
 			children = (
-				A11E84E22813D85400C10914 /* FavouriteLocationsViewController.swift */,
-				A11E84EA2813ED2200C10914 /* FavouriteTableViewCell.swift */,
-				A148FFB1281A9DCB00E61069 /* FavouriteTableViewCell.xib */,
-				A11E84E82813E35C00C10914 /* FavouriteLocationRepository.swift */,
-				A11E84E52813DFF800C10914 /* FavouriteLocationViewModel.swift */,
+				A148FFBF281ACBE800E61069 /* View Contorller */,
+				A148FFC0281ACBF200E61069 /* View */,
+				A148FFC1281ACBFA00E61069 /* Repository */,
+				A148FFC3281ACC0B00E61069 /* View Model */,
 			);
 			path = "Favourite Locations";
 			sourceTree = "<group>";
@@ -183,6 +182,124 @@
 				A18737E82811222800518E31 /* Main.storyboard */,
 			);
 			path = "User Interfaces";
+			sourceTree = "<group>";
+		};
+		A148FFB5281ACB2500E61069 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				A187381928112D6000518E31 /* CurrentWeatherRepository.swift */,
+				A14A070A28167F18003D853A /* OfflineWeatherRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		A148FFB6281ACB3000E61069 /* View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A18737E62811222800518E31 /* CurrentWeatherViewController.swift */,
+			);
+			path = "View Controller";
+			sourceTree = "<group>";
+		};
+		A148FFB7281ACB4100E61069 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A148FFAA281A719A00E61069 /* CurrentWeatherView.swift */,
+				A148FFAC281A71BE00E61069 /* CurrentWeatherView.xib */,
+				A11C4B4D2812776C006D605C /* FiveDayForecastTableViewCell.swift */,
+				A148FFA8281A5FCE00E61069 /* FiveDayForecastTableViewCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A148FFB8281ACB6400E61069 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A11C4B4B28126E97006D605C /* FiveDayForecastModel.swift */,
+				A187381F28112EBD00518E31 /* CurrentWeatherModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A148FFB9281ACB7700E61069 /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+				A18738252811318900518E31 /* CurrentWeatherViewModel.swift */,
+			);
+			path = "View Model";
+			sourceTree = "<group>";
+		};
+		A148FFBA281ACBA100E61069 /* Local Database */ = {
+			isa = PBXGroup;
+			children = (
+				A18737EB2811222800518E31 /* WeatherApp.xcdatamodeld */,
+			);
+			path = "Local Database";
+			sourceTree = "<group>";
+		};
+		A148FFBB281ACBB900E61069 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A11C4B532812A933006D605C /* CitryModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A148FFBC281ACBC500E61069 /* View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A11C4B582812AC4B006D605C /* SearchCityViewController.swift */,
+			);
+			path = "View Controller";
+			sourceTree = "<group>";
+		};
+		A148FFBD281ACBCD00E61069 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				A11C4B512812A8C3006D605C /* CityRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		A148FFBE281ACBD400E61069 /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+				A11C4B562812A9AA006D605C /* SearchByCityViewModel.swift */,
+			);
+			path = "View Model";
+			sourceTree = "<group>";
+		};
+		A148FFBF281ACBE800E61069 /* View Contorller */ = {
+			isa = PBXGroup;
+			children = (
+				A11E84E22813D85400C10914 /* FavouriteLocationsViewController.swift */,
+			);
+			path = "View Contorller";
+			sourceTree = "<group>";
+		};
+		A148FFC0281ACBF200E61069 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A11E84EA2813ED2200C10914 /* FavouriteTableViewCell.swift */,
+				A148FFB1281A9DCB00E61069 /* FavouriteTableViewCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A148FFC1281ACBFA00E61069 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				A11E84E82813E35C00C10914 /* FavouriteLocationRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		A148FFC3281ACC0B00E61069 /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+				A11E84E52813DFF800C10914 /* FavouriteLocationViewModel.swift */,
+			);
+			path = "View Model";
 			sourceTree = "<group>";
 		};
 		A1613275281573880074FA7B /* Resources */ = {
@@ -223,10 +340,10 @@
 				A11E84E42813DFD500C10914 /* Favourite Locations */,
 				A11C4B552812A971006D605C /* Search by City */,
 				A1873823281130E200518E31 /* Current Weather */,
+				A148FFBA281ACBA100E61069 /* Local Database */,
 				A11E84E72813E2B800C10914 /* Config */,
 				A18738172811229800518E31 /* Utilities */,
 				A18737F32811222B00518E31 /* Info.plist */,
-				A18737EB2811222800518E31 /* WeatherApp.xcdatamodeld */,
 				A1873824281130F800518E31 /* Service Layer */,
 			);
 			path = WeatherApp;
@@ -263,16 +380,11 @@
 		A1873823281130E200518E31 /* Current Weather */ = {
 			isa = PBXGroup;
 			children = (
-				A187381928112D6000518E31 /* CurrentWeatherRepository.swift */,
-				A14A070A28167F18003D853A /* OfflineWeatherRepository.swift */,
-				A18737E62811222800518E31 /* CurrentWeatherViewController.swift */,
-				A148FFAA281A719A00E61069 /* CurrentWeatherView.swift */,
-				A148FFAC281A71BE00E61069 /* CurrentWeatherView.xib */,
-				A11C4B4D2812776C006D605C /* FiveDayForecastTableViewCell.swift */,
-				A148FFA8281A5FCE00E61069 /* FiveDayForecastTableViewCell.xib */,
-				A11C4B4B28126E97006D605C /* FiveDayForecastModel.swift */,
-				A187381F28112EBD00518E31 /* CurrentWeatherModel.swift */,
-				A18738252811318900518E31 /* CurrentWeatherViewModel.swift */,
+				A148FFB5281ACB2500E61069 /* Repository */,
+				A148FFB6281ACB3000E61069 /* View Controller */,
+				A148FFB7281ACB4100E61069 /* View */,
+				A148FFB8281ACB6400E61069 /* Models */,
+				A148FFB9281ACB7700E61069 /* View Model */,
 				A18738302811900100518E31 /* weatherConditions.swift */,
 			);
 			path = "Current Weather";
