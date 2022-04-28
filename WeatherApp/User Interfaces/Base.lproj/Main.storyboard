@@ -173,6 +173,9 @@
                                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="kE7-tj-8he">
                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="788"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="500" id="cAd-hg-Q7e"/>
+                                                        </constraints>
                                                     </tableView>
                                                 </subviews>
                                             </stackView>
@@ -213,7 +216,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2IT-vp-0aj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3064" y="1616"/>
+            <point key="canvasLocation" x="3063.768115942029" y="1615.8482142857142"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="zRk-Dk-fiN">

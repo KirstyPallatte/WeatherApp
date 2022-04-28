@@ -19,26 +19,7 @@ class SearchCityViewModel {
     private weak var delegate: searchCityViewModelDelegate?
     private var cityList: [CityData]?
     private var cityFilteredList: [CityData]?
-    
-    // MARK: - Constructor
-    init(repository: SearchCityRepositoryType,
-         delegate: searchCityViewModelDelegate) {
-         self.searchCityRepository = repository
-         self.delegate = delegate
-    }
-    
-    func fetchCityResults() {
-        searchCityRepository?.fetchCityDataResults { [weak self] result in
-            switch result {
-            case .success(let cityData):
-                self?.cityList = cityData
-                self?.delegate?.reloadView()
-            case .failure(let error):
-                self?.delegate?.showError(error: error.rawValue, message: "Cannot get a list of cities")
-            }
-    }
-}
-    
+
     var cityCount: Int {
         return cityList?.count ?? 0
     }
@@ -54,7 +35,27 @@ class SearchCityViewModel {
     var filteredCity: [CityData]? {
         return cityFilteredList
     }
+
+    // MARK: - Constructor
+    init(repository: SearchCityRepositoryType,
+         delegate: searchCityViewModelDelegate) {
+         self.searchCityRepository = repository
+         self.delegate = delegate
+    }
     
+    // MARK: - Functions
+    func fetchCityResults() {
+        searchCityRepository?.fetchCityDataResults { [weak self] result in
+            switch result {
+            case .success(let cityData):
+                self?.cityList = cityData
+                self?.delegate?.reloadView()
+            case .failure(let error):
+                self?.delegate?.showError(error: error.rawValue, message: "Cannot get a list of cities")
+            }
+    }
+}
+
     func search(searchText: String) {
         cityFilteredList = cityList?.filter({$0.name?.lowercased().prefix(searchText.count) ?? "" == searchText.lowercased()})
     }

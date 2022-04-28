@@ -58,5 +58,4 @@ class CityRepository: SearchCityRepositoryType {
         }
         dataTask.resume()
     }
-
 }

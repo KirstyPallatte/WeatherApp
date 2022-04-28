@@ -29,6 +29,7 @@ class SearchCityViewController: UIViewController {
         cityList()
     }
     
+    // MARK: - Functions
     func setUpTableview() {
         self.cityTableview.delegate = self
         self.cityTableview.dataSource = self

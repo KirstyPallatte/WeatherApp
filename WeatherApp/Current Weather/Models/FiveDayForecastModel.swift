@@ -53,7 +53,7 @@ struct ForecastMain: Codable {
     }
 }
 
-// MARK: Forecast Sys
+// MARK: Forecast ForecastSys
 struct ForecastSys: Codable {
     let pod: String
 }
