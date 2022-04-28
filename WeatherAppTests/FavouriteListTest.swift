@@ -386,7 +386,7 @@ class MockFavouriteCityRepository: FavouriteLocationRepository {
                 if shouldDelete {
                 try self.container.viewContext.save()
                 completionHandler(Result.success(locationToRemove))
-                }  else {
+                } else {
                     completionHandler(Result.failure(.deleteCityError))
                 }
             } catch _ as NSError {

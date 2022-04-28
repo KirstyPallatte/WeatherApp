@@ -40,6 +40,7 @@ class FavouriteLocationsViewController: UIViewController {
         favouriteCityTableview.dataSource = self
         favouriteCityTableview.delegate = self
         title = "Favourite Locations"
+        favouriteCityTableview.register(FavouriteTableViewCell.self)
     }
 }
 
@@ -52,8 +53,9 @@ extension FavouriteLocationsViewController: UITableViewDataSource, UITableViewDe
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let city = cityFavouriteViewModel.savedCity(at: indexPath.row) else { return UITableViewCell() }
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "favouriteCell",
-                                                       for: indexPath) as? FavouriteTableViewCell
+        guard let cell = tableView.dequeueReuseableCell(forIndexPath: indexPath,
+                                                        reuseIdentifier: FavouriteTableViewCell.reuseIdentifier)
+                                                        as? FavouriteTableViewCell
         else { return UITableViewCell() }
         
         let cityName = cityFavouriteViewModel.cityLocationNameSaved(city: city)
