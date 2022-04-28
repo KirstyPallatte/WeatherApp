@@ -1502,8 +1502,8 @@
             filePath = "WeatherAppTests/WeatherTest.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "164"
-            endingLineNumber = "164"
+            startingLineNumber = "163"
+            endingLineNumber = "163"
             landmarkName = "testReloadCalled_ReturnsFalse()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1518,8 +1518,8 @@
             filePath = "WeatherAppTests/WeatherTest.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "324"
-            endingLineNumber = "324"
+            startingLineNumber = "323"
+            endingLineNumber = "323"
             landmarkName = "fetchSearchResults(latitude:longitude:completion:)"
             landmarkType = "7">
             <Locations>
@@ -1689,8 +1689,8 @@
             filePath = "WeatherAppTests/WeatherTest.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "178"
-            endingLineNumber = "178"
+            startingLineNumber = "177"
+            endingLineNumber = "177"
             landmarkName = "testReloaddidFailWithError_ReturnsFalse()"
             landmarkType = "7">
             <Locations>
@@ -1737,8 +1737,8 @@
             filePath = "WeatherAppTests/WeatherTest.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "163"
-            endingLineNumber = "163"
+            startingLineNumber = "162"
+            endingLineNumber = "162"
             landmarkName = "testReloadCalled_ReturnsFalse()"
             landmarkType = "7">
          </BreakpointContent>
