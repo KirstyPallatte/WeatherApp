@@ -1294,8 +1294,8 @@
             filePath = "WeatherAppTests/CityListTest.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "123"
-            endingLineNumber = "123"
+            startingLineNumber = "138"
+            endingLineNumber = "138"
             landmarkName = "fetchCityDataResults(completion:)"
             landmarkType = "7">
             <Locations>
@@ -1502,8 +1502,8 @@
             filePath = "WeatherAppTests/WeatherTest.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "163"
-            endingLineNumber = "163"
+            startingLineNumber = "183"
+            endingLineNumber = "183"
             landmarkName = "testReloadCalled_ReturnsFalse()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1518,8 +1518,8 @@
             filePath = "WeatherAppTests/WeatherTest.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "323"
-            endingLineNumber = "323"
+            startingLineNumber = "494"
+            endingLineNumber = "494"
             landmarkName = "fetchSearchResults(latitude:longitude:completion:)"
             landmarkType = "7">
             <Locations>
@@ -1689,8 +1689,8 @@
             filePath = "WeatherAppTests/WeatherTest.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "177"
-            endingLineNumber = "177"
+            startingLineNumber = "197"
+            endingLineNumber = "197"
             landmarkName = "testReloaddidFailWithError_ReturnsFalse()"
             landmarkType = "7">
             <Locations>
@@ -1737,8 +1737,8 @@
             filePath = "WeatherAppTests/WeatherTest.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "162"
-            endingLineNumber = "162"
+            startingLineNumber = "182"
+            endingLineNumber = "182"
             landmarkName = "testReloadCalled_ReturnsFalse()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1897,8 +1897,8 @@
             filePath = "WeatherAppTests/WeatherTest.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "70"
-            endingLineNumber = "70"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
             landmarkName = "testWeatherWithCorrectCoordinates_ReturnsCorrectValue()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1913,8 +1913,8 @@
             filePath = "WeatherAppTests/WeatherTest.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "67"
-            endingLineNumber = "67"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
             landmarkName = "testWeatherWithCorrectCoordinates_ReturnsCorrectValue()"
             landmarkType = "7">
          </BreakpointContent>
@@ -2073,8 +2073,8 @@
             filePath = "WeatherAppTests/FavouriteListTest.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "350"
-            endingLineNumber = "350"
+            startingLineNumber = "418"
+            endingLineNumber = "418"
             landmarkName = "fetchSavedCity(completionHandler:)"
             landmarkType = "7">
             <Locations>
@@ -2152,8 +2152,8 @@
             filePath = "WeatherAppTests/FavouriteListTest.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "361"
-            endingLineNumber = "361"
+            startingLineNumber = "429"
+            endingLineNumber = "429"
             landmarkName = "saveCity(nameLocation:lattitudeCity:longitudeCity:completionHandler:)"
             landmarkType = "7">
             <Locations>
@@ -2215,8 +2215,8 @@
             filePath = "WeatherAppTests/FavouriteListTest.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "260"
-            endingLineNumber = "260"
+            startingLineNumber = "272"
+            endingLineNumber = "272"
             landmarkName = "testFavoruiteLongitdeSaved_ReturnsNotNil()"
             landmarkType = "7">
             <Locations>
@@ -2263,8 +2263,8 @@
             filePath = "WeatherAppTests/FavouriteListTest.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "252"
-            endingLineNumber = "252"
+            startingLineNumber = "264"
+            endingLineNumber = "264"
             landmarkName = "testFavoruiteLattitudeSaved_ReturnsTrue()"
             landmarkType = "7">
          </BreakpointContent>
@@ -2279,8 +2279,8 @@
             filePath = "WeatherAppTests/FavouriteListTest.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "272"
-            endingLineNumber = "272"
+            startingLineNumber = "284"
+            endingLineNumber = "284"
             landmarkName = "FavouriteListTest"
             landmarkType = "3">
          </BreakpointContent>
@@ -2295,8 +2295,8 @@
             filePath = "WeatherAppTests/FavouriteListTest.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "384"
-            endingLineNumber = "384"
+            startingLineNumber = "452"
+            endingLineNumber = "452"
             landmarkName = "deleteSavedCity(locationToRemove:completionHandler:)"
             landmarkType = "7">
             <Locations>
@@ -2358,8 +2358,8 @@
             filePath = "WeatherAppTests/FavouriteListTest.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "286"
-            endingLineNumber = "286"
+            startingLineNumber = "338"
+            endingLineNumber = "338"
             landmarkName = "testFavoruiteLocationDelete_ReturnsNotNil()"
             landmarkType = "7">
          </BreakpointContent>
@@ -2585,6 +2585,150 @@
             startingLineNumber = "372"
             endingLineNumber = "372"
             landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FB35B54F-A28C-4DF9-B2CB-0933E45EA186"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WeatherAppTests/WeatherTest.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
+            landmarkName = "testWeatherFavouriteCoordinates_ReturnsNotEqual()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C7DECF35-C73F-4A96-9B79-C08930893D54"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WeatherAppTests/WeatherTest.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
+            landmarkName = "testWeatherFavouriteCoordinates_ReturnsNotEqual()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9A06C4CC-1E8A-45FD-9B37-9006ACA57D18"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WeatherAppTests/WeatherTest.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
+            landmarkName = "testWeatherFavouriteCoordinates_ReturnsNotEqual()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D5C348D8-307B-4EEE-ABCB-9CD611F36875"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WeatherAppTests/WeatherTest.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "261"
+            endingLineNumber = "261"
+            landmarkName = "testBackgroundImageNoData_ReturnNotEqual()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5924A051-621E-4559-A47A-D3C665D1383E"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WeatherAppTests/WeatherTest.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "236"
+            endingLineNumber = "236"
+            landmarkName = "WeatherTest"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "18ED2FAE-0CF6-420D-9FE1-AFA038433555"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WeatherAppTests/WeatherTest.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "280"
+            endingLineNumber = "280"
+            landmarkName = "testBackgroundImageRainy_ReturntEqual()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "18ED2FAE-0CF6-420D-9FE1-AFA038433555 - df76b9a0a3201147"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WeatherAppTests.WeatherTest.testBackgroundImageRainy_ReturntTrue() -&gt; ()"
+                  moduleName = "WeatherAppTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kwalker/Desktop/WeatherApp/WeatherAppTests/WeatherTest.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "273"
+                  endingLineNumber = "273"
+                  offsetFromSymbolStart = "540">
+               </Location>
+               <Location
+                  uuid = "18ED2FAE-0CF6-420D-9FE1-AFA038433555 - df76b9a0a3201147"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WeatherAppTests.WeatherTest.testBackgroundImageRainy_ReturntTrue() -&gt; ()"
+                  moduleName = "WeatherAppTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kwalker/Desktop/WeatherApp/WeatherAppTests/WeatherTest.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "273"
+                  endingLineNumber = "273"
+                  offsetFromSymbolStart = "560">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "415660D9-7576-498D-A3E1-6F86795B19BF"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WeatherAppTests/FavouriteListTest.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "297"
+            endingLineNumber = "297"
+            landmarkName = "testFavoruiteSaved_ReturnsEqual()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

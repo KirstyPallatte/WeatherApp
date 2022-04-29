@@ -247,6 +247,18 @@ class FavouriteListTest: XCTestCase {
         XCTAssertNotNil(favouriteViewModel.cityLattitudeSaved(city: city))
     }
     
+    func testFavoruiteLattitudeSavedClosure_ReturnsNotNil() {
+        mockFavouriteCityRepository.shouldPass = true
+        mockFavouriteCityRepository.setContainer(viewContainer: container)
+        favouriteViewModel.saveCityInLocalDatabase(nameCity: "Johburg", lattitude: 90.00, longitude: 20.45)
+        mockFavouriteCityRepository.fetchSavedCity { _ in
+            
+        }
+        guard let city = favouriteViewModel.savedCity(at: 0) else { return }
+        XCTAssertNotNil(favouriteViewModel.cityLattitudeSaved(city: city))
+    }
+    
+    
     func testFavoruiteLattitudeSaved_ReturnsTrue() {
         mockFavouriteCityRepository.setContainer(viewContainer: container)
         favouriteViewModel.saveCityInLocalDatabase(nameCity: "Johburg", lattitude: 90.00, longitude: 20.45)
@@ -275,6 +287,46 @@ class FavouriteListTest: XCTestCase {
         favouriteViewModel.saveCityInLocalDatabase(nameCity: "Johburg", lattitude: 90.00, longitude: 20.45)
         favouriteViewModel.fetchCityDataResults()
         XCTAssertNotNil(favouriteViewModel.favouriteCitySaved)
+    }
+    
+    func testFavoruiteSaved_ReturnsEqual() {
+        mockFavouriteCityRepository.shouldPass = false
+        mockFavouriteCityRepository.setContainer(viewContainer: container)
+        favouriteViewModel.saveCityInLocalDatabase(nameCity: "Johburg", lattitude: 90.00, longitude: 20.45)
+        favouriteViewModel.fetchCityDataResults()
+        _ = favouriteViewModel.favouriteCitySaved()
+        XCTAssertEqual(favouriteViewModel.citySavedCount,0)
+    }
+    
+    func testFavoruiteSaved_ReturnsNotEqual() {
+        mockFavouriteCityRepository.shouldPass = true
+        mockFavouriteCityRepository.setContainer(viewContainer: container)
+        favouriteViewModel.saveCityInLocalDatabase(nameCity: "Johburg", lattitude: 90.00, longitude: 20.45)
+        favouriteViewModel.fetchCityDataResults()
+        _ = favouriteViewModel.favouriteCitySaved()
+        XCTAssertNotEqual(favouriteViewModel.citySavedCount,0)
+    }
+    
+    func testFavoruiteSavedClosureNoData_ReturnsEqual() {
+        mockFavouriteCityRepository.shouldPass = false
+        mockFavouriteCityRepository.setContainer(viewContainer: container)
+        favouriteViewModel.saveCityInLocalDatabase(nameCity: "Johburg", lattitude: 90.00, longitude: 20.45)
+        mockFavouriteCityRepository.fetchSavedCity { _ in
+            
+        }
+        _ = favouriteViewModel.favouriteCitySaved()
+        XCTAssertEqual(favouriteViewModel.citySavedCount,0)
+    }
+    
+    func testFavoruiteSavedClosureNoData_ReturnsNotEqual() {
+        mockFavouriteCityRepository.shouldPass = false
+        mockFavouriteCityRepository.setContainer(viewContainer: container)
+        favouriteViewModel.saveCityInLocalDatabase(nameCity: "Johburg", lattitude: 90.00, longitude: 20.45)
+        mockFavouriteCityRepository.fetchSavedCity { _ in
+            _ = self.favouriteViewModel.favouriteCitySaved()
+            XCTAssertNotEqual(self.favouriteViewModel.citySavedCount,1)
+        }
+
     }
     
     func testFavoruiteLocationDelete_ReturnsNotNil() {
@@ -310,6 +362,22 @@ class FavouriteListTest: XCTestCase {
         guard let city = favouriteViewModel.savedCity(at: 0) else { return }
         favouriteViewModel.deleteCityLocaldatabase(cityToRemove: city)
         XCTAssertTrue(self.mockFavouriteCitySearchrDelegat.errorCalled)
+    }
+    
+    func testCitySavedCount_ResultIncorrectCount() {
+        mockFavouriteCityRepository.shouldPass = false
+        mockFavouriteCityRepository.setContainer(viewContainer: container)
+        favouriteViewModel.saveCityInLocalDatabase(nameCity: "Johburg", lattitude: 90.00, longitude: 20.45)
+        favouriteViewModel.fetchCityDataResults()
+        XCTAssertNotEqual(favouriteViewModel.citySavedCount, 1)
+    }
+    
+    func testCityFSavedCount_CorrectCount() {
+        mockFavouriteCityRepository.shouldPass = true
+        mockFavouriteCityRepository.setContainer(viewContainer: container)
+        favouriteViewModel.saveCityInLocalDatabase(nameCity: "Johburg", lattitude: 90.00, longitude: 20.45)
+        favouriteViewModel.fetchCityDataResults()
+        XCTAssertEqual(favouriteViewModel.citySavedCount, 1)
     }
 }
 

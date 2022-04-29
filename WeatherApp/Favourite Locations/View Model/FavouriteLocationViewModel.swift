@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 // MARK: - cityLocalDatabaseViewModel Delegate
 protocol CityLocalDatabaseViewModelDelegate: AnyObject {
