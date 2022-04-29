@@ -135,9 +135,17 @@ class CurrentWeatherViewModel: NSObject {
         }
     
     func fetchForecastCurrentWeatherResults(completion: @escaping (ForecastData) -> Void) {
-        if let latitude = locationManager.location?.coordinate.latitude,
-           let longitude = locationManager.location?.coordinate.longitude {
-            currentWeatherRepository?.fetchForecastSearchResults(latitude: latitude, longitude: longitude, completion: { [weak self] result in
+        if favLattiude != nil && favLongitude != nil {
+            currentLocationLattiude = favLattiude
+            currentLoationLongitude = favLongitude
+        } else {
+            currentLocationLattiude = locationManager.location?.coordinate.latitude
+            currentLoationLongitude = locationManager.location?.coordinate.longitude
+        }
+
+            currentWeatherRepository?.fetchForecastSearchResults(latitude: currentLocationLattiude ?? -28.4793,
+                                                                 longitude: currentLoationLongitude ?? 24.6727,
+                                                                 completion: { [weak self] result in
                     switch result {
                     case .success(let forecastData):
                         self?.forcastObject = forecastData
@@ -147,7 +155,6 @@ class CurrentWeatherViewModel: NSObject {
                         self?.delegate?.showError(error: error.rawValue, message: "Could not retrieve the forecast weather.")
                     }
             })
-        }
     }
     
     func isCurrentLocalDatabseWeatherEmpty() -> Bool {
