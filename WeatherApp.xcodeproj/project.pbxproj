@@ -47,9 +47,11 @@
 		A187382028112EBD00518E31 /* CurrentWeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A187381F28112EBD00518E31 /* CurrentWeatherModel.swift */; };
 		A18738262811318900518E31 /* CurrentWeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18738252811318900518E31 /* CurrentWeatherViewModel.swift */; };
 		A18738312811900100518E31 /* weatherConditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18738302811900100518E31 /* weatherConditions.swift */; };
-		A1873833281192A000518E31 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1873832281192A000518E31 /* UIColorExtension.swift */; };
 		A189FE9A281976B3002C3322 /* FavouriteListTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A189FE99281976B3002C3322 /* FavouriteListTest.swift */; };
 		A1EA1D1028182E9500331029 /* WeatherTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EA1D0F28182E9500331029 /* WeatherTest.swift */; };
+		A1FE8C4E281C002800A073E2 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1873832281192A000518E31 /* UIColorExtension.swift */; };
+		A1FE8C50281C01B600A073E2 /* ImageExtensionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FE8C4F281C01B600A073E2 /* ImageExtensionTest.swift */; };
+		A1FE8C52281C12B500A073E2 /* UIColourExtenionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FE8C51281C12B500A073E2 /* UIColourExtenionTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,6 +119,8 @@
 		A1873832281192A000518E31 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		A189FE99281976B3002C3322 /* FavouriteListTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteListTest.swift; sourceTree = "<group>"; };
 		A1EA1D0F28182E9500331029 /* WeatherTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherTest.swift; sourceTree = "<group>"; };
+		A1FE8C4F281C01B600A073E2 /* ImageExtensionTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExtensionTest.swift; sourceTree = "<group>"; };
+		A1FE8C51281C12B500A073E2 /* UIColourExtenionTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColourExtenionTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -352,8 +356,10 @@
 		A18737FB2811222B00518E31 /* WeatherAppTests */ = {
 			isa = PBXGroup;
 			children = (
+				A1FE8C4F281C01B600A073E2 /* ImageExtensionTest.swift */,
 				A18737FC2811222B00518E31 /* CityListTest.swift */,
 				A1EA1D0F28182E9500331029 /* WeatherTest.swift */,
+				A1FE8C51281C12B500A073E2 /* UIColourExtenionTest.swift */,
 				A128615F28195D1C00B7DB97 /* OfflineWeatherTest.swift */,
 				A189FE99281976B3002C3322 /* FavouriteListTest.swift */,
 			);
@@ -402,11 +408,11 @@
 		A18738342811944E00518E31 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				A1873832281192A000518E31 /* UIColorExtension.swift */,
 				A148FFA4281A5B2700E61069 /* UITableviewCellExtension.swift */,
 				A148FFA6281A5B5400E61069 /* UITableviewExtension.swift */,
 				A11E84EC2813EF6200C10914 /* AlertExtension.swift */,
 				A11C4B4F281291DE006D605C /* UIImageExtension.swift */,
+				A1873832281192A000518E31 /* UIColorExtension.swift */,
 				A11E84EE28145E7B00C10914 /* DateExtension.swift */,
 				A148FFAF281A9B7500E61069 /* UIViewExtension.swift */,
 			);
@@ -575,7 +581,6 @@
 				A14A070B28167F18003D853A /* OfflineWeatherRepository.swift in Sources */,
 				A11C4B572812A9AA006D605C /* SearchByCityViewModel.swift in Sources */,
 				A11E84E92813E35C00C10914 /* FavouriteLocationRepository.swift in Sources */,
-				A1873833281192A000518E31 /* UIColorExtension.swift in Sources */,
 				A18738162811226200518E31 /* Constants.swift in Sources */,
 				A18737ED2811222800518E31 /* WeatherApp.xcdatamodeld in Sources */,
 				A11C4B4C28126E97006D605C /* FiveDayForecastModel.swift in Sources */,
@@ -586,6 +591,7 @@
 				A11E84E62813DFF800C10914 /* FavouriteLocationViewModel.swift in Sources */,
 				A18737E72811222800518E31 /* CurrentWeatherViewController.swift in Sources */,
 				A148FFAB281A719A00E61069 /* CurrentWeatherView.swift in Sources */,
+				A1FE8C4E281C002800A073E2 /* UIColorExtension.swift in Sources */,
 				A11C4B592812AC4B006D605C /* SearchCityViewController.swift in Sources */,
 				A11C4B50281291DE006D605C /* UIImageExtension.swift in Sources */,
 				A16132772815739C0074FA7B /* locationJsonObject.json in Sources */,
@@ -610,6 +616,8 @@
 				A1EA1D1028182E9500331029 /* WeatherTest.swift in Sources */,
 				A18737FD2811222B00518E31 /* CityListTest.swift in Sources */,
 				A189FE9A281976B3002C3322 /* FavouriteListTest.swift in Sources */,
+				A1FE8C50281C01B600A073E2 /* ImageExtensionTest.swift in Sources */,
+				A1FE8C52281C12B500A073E2 /* UIColourExtenionTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

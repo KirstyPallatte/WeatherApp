@@ -20,7 +20,7 @@ class CurrentWeatherViewController: UIViewController {
                                                                        repositoryOffline: WeatherOfflineRepository(),
                                                                        delegate: self)
     private var isImagePressed = false
-    private var overallBackgroundColour: UIColor?
+    var overallBackgroundColour: UIColor?
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -245,7 +245,7 @@ class CurrentWeatherViewController: UIViewController {
         
     }
     
-    private func setBackgroundColoursCurrentWeather() {
+    func setBackgroundColoursCurrentWeather() {
         
         var weatherConditionType: String
         
@@ -280,7 +280,7 @@ class CurrentWeatherViewController: UIViewController {
         overallBackgroundColour = backgroundColour
     }
     
-    private func setIconForecastWeather(currentCondition: String) -> UIImage {
+     func setIconForecastWeather(currentCondition: String) -> UIImage {
         var backgroundIcon: UIImage
         let weatherCondition = WeatherCondition.init(rawValue: currentCondition)
         switch weatherCondition {

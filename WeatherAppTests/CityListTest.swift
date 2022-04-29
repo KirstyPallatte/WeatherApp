@@ -102,6 +102,20 @@ class CityListTest: XCTestCase {
         cityViewModel.fetchCityResults()
         XCTAssertEqual(cityViewModel.cityCount, 1)
     }
+    
+    func testCityFilteredCount_ResultCorrectCount() {
+        mockCityRepository.shouldPass = false
+        cityViewModel.fetchCityResults()
+        cityViewModel.search(searchText: "Johburg")
+        XCTAssertEqual(cityViewModel.filteredCityCount, 0)
+    }
+    
+    func testCityFilteredCount_ResultIncorrectCount() {
+        mockCityRepository.shouldPass = false
+        cityViewModel.fetchCityResults()
+        cityViewModel.search(searchText: "Johburg")
+        XCTAssertNotEqual(cityViewModel.filteredCityCount, 1)
+    }
 }
 
 class MockCityListDelegate: searchCityViewModelDelegate {
@@ -116,6 +130,7 @@ class MockCityListDelegate: searchCityViewModelDelegate {
         errorCalled = true
     }
 }
+
 
 class MockCityListDataRepository: SearchCityRepositoryType {
     var shouldPass = false
