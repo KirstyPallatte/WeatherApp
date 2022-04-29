@@ -4,7 +4,6 @@
 //
 //  Created by Kirsty-Lee Walker on 2022/04/26.
 //
-
 import XCTest
 import CoreLocation
 import CoreData
@@ -226,51 +225,12 @@ class WeatherTest: XCTestCase {
         XCTAssertEqual(weatherViewModel.setBackgroundimage(), Constants.SEASUNNY)
     }
     
-    func testBackgroundImage_ReturnsNotEqual() {
-        mockWeatherRepository.shouldPass = true
-        mockWeatherRepository.fetchSearchResults(latitude: -28.4793, longitude:  24.6727) { _ in
-        }
-        weatherViewModel.imagePressed(pressed: false)
-        XCTAssertEqual(weatherViewModel.setBackgroundimage(), Constants.SEASUNNY)
-    }
-    
     func testBackgroundImage_ReturntEqual() {
         mockWeatherRepository.shouldPass = true
         weatherViewModel.fetchCurrentWeatherResults { _ in
         }
         weatherViewModel.imagePressed(pressed: false)
         XCTAssertEqual(weatherViewModel.setBackgroundimage(), Constants.FORESTSUNNY)
-    }
-    
-    func testBackgroundImage_ReturntNotEqual() {
-        mockWeatherRepository.shouldPass = true
-        weatherViewModel.fetchCurrentWeatherResults { _ in
-        }
-        weatherViewModel.imagePressed(pressed: true)
-        XCTAssertNotEqual(weatherViewModel.setBackgroundimage(), Constants.FORESTSUNNY)
-    }
-    
-    func testBackgroundImageNoData_ReturntEqua() {
-        mockWeatherRepository.shouldPass = false
-        weatherViewModel.imagePressed(pressed: true)
-        weatherViewModel.fetchCurrentWeatherResults { _ in
-            XCTAssertEqual(self.weatherViewModel.setBackgroundimage(), Constants.FORESTSUNNY)
-        }
-    }
-    
-    func testBackgroundImageNoData_ReturnNotEqual() {
-        mockWeatherRepository.fetchSearchResults(latitude: -28.4793, longitude:  24.6727) { _ in
-        }
-        weatherViewModel.imagePressed(pressed: false)
-        XCTAssertNotEqual(weatherViewModel.setBackgroundimage(), Constants.FORESTSUNNY)
-    }
-    
-    func testBackgroundImageWithData_ReturntEqua() {
-        mockWeatherRepository.shouldPass = true
-        weatherViewModel.imagePressed(pressed: true)
-        weatherViewModel.fetchCurrentWeatherResults { _ in
-            XCTAssertEqual(self.weatherViewModel.setBackgroundimage(), Constants.SEASUNNY)
-        }
     }
     
     func testBackgroundImageRainy_ReturntEqual() {
@@ -347,15 +307,6 @@ class WeatherTest: XCTestCase {
         mockWeatherRepository.shouldPass = true
         mockWeatherRepository.weatherCondition = "none"
         weatherViewModel.imagePressed(pressed: false)
-        weatherViewModel.fetchCurrentWeatherResults { _ in
- 
-        }
-        XCTAssertNotEqual(weatherViewModel.setBackgroundimage(), Constants.SEASUNNY)
-    }
-    
-    func testBackgroundButtonPressedNotSet_ReturntNotEqual() {
-        mockWeatherRepository.shouldPass = true
-        mockWeatherRepository.weatherCondition = "none"
         weatherViewModel.fetchCurrentWeatherResults { _ in
  
         }
@@ -521,9 +472,8 @@ class MockWeatherRepository: SearchCurrentWeatherRepositoryType {
                                                         description: "sunny with clouds", icon: "sunny")],
                                       main: Main(temp: 23, feelsLike: 25, tempMin: 20, tempMax: 25, pressure: 20, humidity: 50),
                                       base: "", visibility: 100, wind: Wind(speed: 25, deg: 28),
-                                      clouds: Clouds(all: 1), dt: 30, sys: SunType(type: 2, id: 3,
-                                      country: "South Africa", sunrise: 6, sunset: 6), timezone: 20, id: 1,
-                                      name: "Cape Town", cod: 1)
+                                      clouds: Clouds(all: 1), dt: 30, sys: SunType(type: 2, id: 3, country: "South Africa",
+                                      sunrise: 6, sunset: 6), timezone: 20, id: 1, name: "Cape Town", cod: 1)
         return weathherData
     }
     

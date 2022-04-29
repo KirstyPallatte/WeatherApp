@@ -131,7 +131,6 @@ class MockCityListDelegate: searchCityViewModelDelegate {
     }
 }
 
-
 class MockCityListDataRepository: SearchCityRepositoryType {
     var shouldPass = false
     
