@@ -245,7 +245,7 @@ class CurrentWeatherViewController: UIViewController {
         
     }
     
-    func setBackgroundColoursCurrentWeather() {
+    private func setBackgroundColoursCurrentWeather() {
         
         var weatherConditionType: String
         
