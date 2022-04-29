@@ -4,7 +4,6 @@
 //
 //  Created by Kirsty-Lee Walker on 2022/04/26.
 //
-
 import XCTest
 import CoreLocation
 import CoreData
@@ -43,7 +42,6 @@ class WeatherTest: XCTestCase {
     }
     
     // MARK: - Current Weather Test
-
     func testWeatherDetailsCount_ReturnsIncorrectValue() {
         mockWeatherRepository.shouldPass = false
         XCTAssertNotEqual(self.weatherViewModel.objectCurrentWeather?.weather?.count, 1)
@@ -201,13 +199,7 @@ class WeatherTest: XCTestCase {
         waitForExpectations(timeout: 5, handler: nil)
         XCTAssertFalse(mockWeatherDelegat.didFailWeatherCalled)
     }
-    
-    func testSetNewWeekArray() {
-        let testArray = ["None", "None", "None", "None", "None", "None", "None"]
-        let returnedArray = weatherViewModel.dayOfWeeekArray(index: 0)
-        XCTAssertNotEqual(returnedArray, testArray[0])
-    }
-    
+
     func testWetaherObject_ReturnsNil() {
         let expectation = self.expectation(description: "Fetching")
         mockWeatherRepository.shouldPass = true
@@ -226,14 +218,6 @@ class WeatherTest: XCTestCase {
         XCTAssertEqual(weatherViewModel.setBackgroundimage(), Constants.SEASUNNY)
     }
     
-    func testBackgroundImage_ReturnsNotEqual() {
-        mockWeatherRepository.shouldPass = true
-        mockWeatherRepository.fetchSearchResults(latitude: -28.4793, longitude:  24.6727) { _ in
-        }
-        weatherViewModel.imagePressed(pressed: false)
-        XCTAssertEqual(weatherViewModel.setBackgroundimage(), Constants.SEASUNNY)
-    }
-    
     func testBackgroundImage_ReturntEqual() {
         mockWeatherRepository.shouldPass = true
         weatherViewModel.fetchCurrentWeatherResults { _ in
@@ -247,21 +231,6 @@ class WeatherTest: XCTestCase {
         weatherViewModel.fetchCurrentWeatherResults { _ in
         }
         weatherViewModel.imagePressed(pressed: true)
-        XCTAssertNotEqual(weatherViewModel.setBackgroundimage(), Constants.FORESTSUNNY)
-    }
-    
-    func testBackgroundImageNoData_ReturntEqua() {
-        mockWeatherRepository.shouldPass = false
-        weatherViewModel.imagePressed(pressed: true)
-        weatherViewModel.fetchCurrentWeatherResults { _ in
-            XCTAssertEqual(self.weatherViewModel.setBackgroundimage(), Constants.FORESTSUNNY)
-        }
-    }
-    
-    func testBackgroundImageNoData_ReturnNotEqual() {
-        mockWeatherRepository.fetchSearchResults(latitude: -28.4793, longitude:  24.6727) { _ in
-        }
-        weatherViewModel.imagePressed(pressed: false)
         XCTAssertNotEqual(weatherViewModel.setBackgroundimage(), Constants.FORESTSUNNY)
     }
     
@@ -367,7 +336,6 @@ class WeatherTest: XCTestCase {
     }
     
     // MARK: - Forecast Weather Test
-    
     func testWeatherForecastDetailsCount_ReturnsIncorrectValue() {
         mockWeatherRepository.shouldPass = false
         weatherViewModel.fetchForecastCurrentWeatherResults { _ in
@@ -438,30 +406,12 @@ class WeatherTest: XCTestCase {
         XCTAssertNotEqual(weatherViewModel.objectForecastWeather?.list[0].main.temp,158)
     }
     
-    func testWeeekday_ReturnsNotNil() {
-        weatherViewModel.setweekDayArr()
-        XCTAssertNotNil(weatherViewModel.dayOfWeeekArray(index: 0))
-    }
-    
     func testIsPressed_ReturnsEqual() {
         XCTAssertEqual(weatherViewModel.isPressed, false)
     }
     
     func testIsPressed_ReturnsNotEqual() {
         XCTAssertNotEqual(weatherViewModel.isPressed, true)
-    }
-    
-    // MARK: - Location
-    func testCurrentLocation_ReturnsNil() {
-        let locationManager = CLLocationManager()
-        locationManager.requestWhenInUseAuthorization()
-        XCTAssertFalse(mockWeatherDelegat.didUpdateWeaherCalled)
-        locationManager.startUpdatingLocation()
-        locationManager.requestWhenInUseAuthorization()
-        let currentLocationLattiude = locationManager.location?.coordinate.latitude
-        let currentLoationLongitude = locationManager.location?.coordinate.longitude
-        XCTAssertNil(currentLocationLattiude)
-        XCTAssertNil(currentLoationLongitude)
     }
 }
 
@@ -517,8 +467,8 @@ class MockWeatherRepository: SearchCurrentWeatherRepositoryType {
       
         weathherData = CurrentWeather(coord: Coord(lon: 24.6727, lat: -28.4793),
                                       weather: [Weather(id: 1,
-                                                        main: weatherCondition,
-                                                        description: "sunny with clouds", icon: "sunny")],
+                                      main: weatherCondition,
+                                      description: "sunny with clouds", icon: "sunny")],
                                       main: Main(temp: 23, feelsLike: 25, tempMin: 20, tempMax: 25, pressure: 20, humidity: 50),
                                       base: "", visibility: 100, wind: Wind(speed: 25, deg: 28),
                                       clouds: Clouds(all: 1), dt: 30, sys: SunType(type: 2, id: 3,
@@ -531,10 +481,10 @@ class MockWeatherRepository: SearchCurrentWeatherRepositoryType {
         var forecastData: ForecastData
         forecastData = ForecastData(cod: "24", message: 1, cnt: 1,
                                     list: [ListItem(dt: 15, main: ForecastMain(temp: 15, tempMin: 16, tempMax: 20, pressure: 23,
-                                                                               seaLevel: 24, grndLevel: 56, humidity: 1, tempKf: 12),
-                                                    weather: [ForecastWeather(id: 1, main: "sunny", description: "sunny", icon: "sun")],
-                                                    clouds: ForecastClouds(all: 1), wind: ForecastWind(speed: 15, deg: 24),
-                                                    sys: ForecastSys(pod: ""), dtTxt: "")])
+                                    seaLevel: 24, grndLevel: 56, humidity: 1, tempKf: 12),
+                                    weather: [ForecastWeather(id: 1, main: "sunny", description: "sunny", icon: "sun")],
+                                    clouds: ForecastClouds(all: 1), wind: ForecastWind(speed: 15, deg: 24),
+                                    sys: ForecastSys(pod: ""), dtTxt: "")])
         return forecastData
     }
 }

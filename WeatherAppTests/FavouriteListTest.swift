@@ -258,7 +258,6 @@ class FavouriteListTest: XCTestCase {
         XCTAssertNotNil(favouriteViewModel.cityLattitudeSaved(city: city))
     }
     
-    
     func testFavoruiteLattitudeSaved_ReturnsTrue() {
         mockFavouriteCityRepository.setContainer(viewContainer: container)
         favouriteViewModel.saveCityInLocalDatabase(nameCity: "Johburg", lattitude: 90.00, longitude: 20.45)
