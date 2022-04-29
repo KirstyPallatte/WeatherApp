@@ -4,7 +4,6 @@
 //
 //  Created by Kirsty-Lee Walker on 2022/04/26.
 //
-
 import XCTest
 import CoreLocation
 import CoreData
@@ -153,6 +152,12 @@ class OfflineWeatherTest: XCTestCase {
         XCTAssertEqual(weatherCount,expectedCount)
     }
     
+    func testSetNewWeekArray() {
+        let testArray = ["None", "None", "None", "None", "None", "None", "None"]
+        let returnedArray = weatherViewModel.dayOfWeeekArray(index: 0)
+        XCTAssertNotEqual(returnedArray, testArray[0])
+    }
+
     func testForecastWeatherSaved_ReturnsNotNil() {
         offlineWeatherRepository.shouldPass = true
         offlineWeatherRepository.setContainer(viewContainer: container)
@@ -257,6 +262,24 @@ class OfflineWeatherTest: XCTestCase {
         XCTAssertNotEqual(conditonArr,weatherViewModel.arrayWeatherForecastConditions)
         XCTAssertNotEqual(conditonTemp,weatherViewModel.arrayWeatherForecastTemperatures)
     }
+    
+    // MARK: - Location
+    func testCurrentLocation_ReturnsNil() {
+        let locationManager = CLLocationManager()
+        locationManager.requestWhenInUseAuthorization()
+        XCTAssertFalse(mockWeatherDelegat.didUpdateWeaherCalled)
+        locationManager.startUpdatingLocation()
+        locationManager.requestWhenInUseAuthorization()
+        let currentLocationLattiude = locationManager.location?.coordinate.latitude
+        let currentLoationLongitude = locationManager.location?.coordinate.longitude
+        XCTAssertNil(currentLocationLattiude)
+        XCTAssertNil(currentLoationLongitude)
+    }
+    
+    func testWeeekday_ReturnsNotNil() {
+        weatherViewModel.setweekDayArr()
+        XCTAssertNotNil(weatherViewModel.dayOfWeeekArray(index: 0))
+    }
 }
 
 class MockForecastWeatherDelegate: CurrentWeatherViewModelDelegate {
@@ -268,7 +291,7 @@ class MockForecastWeatherDelegate: CurrentWeatherViewModelDelegate {
     func reloadView() {
         reloadViewCalled = true
     }
-    
+
     func showError(error: String, message: String) {
         errorCalled = true
     }
@@ -358,7 +381,6 @@ class MockOfflineForecastRepository: WeatherOfflineRepository {
                                        maxTemp: Double,
                                        minTemp: Double,
                                        datetime: String) {
-        
         var localDatabse: OfflineWeather
         localDatabse = OfflineWeather(context: container.viewContext)
         localDatabse.setValue(cityName, forKeyPath: "cityName")
@@ -412,7 +434,6 @@ class MockOfflineForecastRepository: WeatherOfflineRepository {
                                                     tempDay4: Double,
                                                     tempDay5: Double,
                                                     completionHandler: @escaping SaveWeatherOfflineForecastResults) {
-        
         var localDatabse: OfflineFiveDayForecast
         localDatabse = OfflineFiveDayForecast(context: container.viewContext)
         localDatabse.condition1 = conditionDay1
@@ -446,7 +467,6 @@ class MockOfflineForecastRepository: WeatherOfflineRepository {
                                         tempDay3 : Double,
                                         tempDay4 : Double,
                                         tempDay5 : Double) {
-        
         var localDatabse: OfflineFiveDayForecast
         localDatabse = OfflineFiveDayForecast(context: container.viewContext)
         localDatabse.setValue(conditionDay1, forKeyPath: "condition1")
