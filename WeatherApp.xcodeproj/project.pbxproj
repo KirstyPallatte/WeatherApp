@@ -51,7 +51,6 @@
 		A1EA1D1028182E9500331029 /* WeatherTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EA1D0F28182E9500331029 /* WeatherTest.swift */; };
 		A1FE8C4E281C002800A073E2 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1873832281192A000518E31 /* UIColorExtension.swift */; };
 		A1FE8C50281C01B600A073E2 /* ImageExtensionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FE8C4F281C01B600A073E2 /* ImageExtensionTest.swift */; };
-		A1FE8C52281C12B500A073E2 /* UIColourExtenionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FE8C51281C12B500A073E2 /* UIColourExtenionTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,7 +119,6 @@
 		A189FE99281976B3002C3322 /* FavouriteListTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteListTest.swift; sourceTree = "<group>"; };
 		A1EA1D0F28182E9500331029 /* WeatherTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherTest.swift; sourceTree = "<group>"; };
 		A1FE8C4F281C01B600A073E2 /* ImageExtensionTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExtensionTest.swift; sourceTree = "<group>"; };
-		A1FE8C51281C12B500A073E2 /* UIColourExtenionTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColourExtenionTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -359,7 +357,6 @@
 				A1FE8C4F281C01B600A073E2 /* ImageExtensionTest.swift */,
 				A18737FC2811222B00518E31 /* CityListTest.swift */,
 				A1EA1D0F28182E9500331029 /* WeatherTest.swift */,
-				A1FE8C51281C12B500A073E2 /* UIColourExtenionTest.swift */,
 				A128615F28195D1C00B7DB97 /* OfflineWeatherTest.swift */,
 				A189FE99281976B3002C3322 /* FavouriteListTest.swift */,
 			);
@@ -617,7 +614,6 @@
 				A18737FD2811222B00518E31 /* CityListTest.swift in Sources */,
 				A189FE9A281976B3002C3322 /* FavouriteListTest.swift in Sources */,
 				A1FE8C50281C01B600A073E2 /* ImageExtensionTest.swift in Sources */,
-				A1FE8C52281C12B500A073E2 /* UIColourExtenionTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
